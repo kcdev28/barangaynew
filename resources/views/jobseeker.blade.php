@@ -187,7 +187,7 @@
                                 </tr>
                             </thead>
                             <tbody id="js_tableBody">
-                                <!-- JS will populate here -->
+                                
                             </tbody>
                         </table>
                         <div id="js_noResults" class="no-results" style="display:none;">
@@ -196,6 +196,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Add Job Seeker Modal -->
             <div class="modal fade" id="addJobseekerModal" tabindex="-1">
                 <div class="modal-dialog modal-lg">
@@ -328,17 +329,75 @@
             }
         }
 
+        document.getElementById('searchInput').addEventListener('input', filterJobSeekerRequests);
+        document.getElementById('statusFilter').addEventListener('change', filterJobSeekerRequests);
+        document.getElementById('dateFilter').addEventListener('change', filterJobSeekerRequests);
+
+
+        function filterJobSeekerRequests() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+            const statusValue = document.getElementById('statusFilter').value;
+            const dateValue = document.getElementById('dateFilter').value;
+
+            const rows = document.querySelectorAll('#js_tableBody tr');
+            let visibleCount = 0;
+
+            rows.forEach(row => {
+                const cells = row.cells;
+                const name = cells[0].textContent.toLowerCase();
+                const address = cells[1].textContent.toLowerCase();
+                const dateIssued = cells[2].textContent.trim();
+                const status = cells[3].textContent.trim();
+
+                
+                const matchesSearch = name.includes(searchValue) || address.includes(searchValue);
+                const matchesStatus = !statusValue || status === statusValue;
+
+               
+                let matchesDate = true;
+                if (dateValue && dateIssued) {
+                    
+                    const issuedDate = new Date(dateIssued);
+                    const filterDate = new Date(dateValue);
+
+                    matchesDate = issuedDate.toDateString() === filterDate.toDateString();
+                } else if (dateValue && !dateIssued) {
+                    matchesDate = false;
+                }
+
+             
+                if (matchesSearch && matchesStatus && matchesDate) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            
+            document.getElementById('js_recordCount').textContent = visibleCount;
+
+            
+            const noResults = document.getElementById('js_noResults');
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+
         function resetFilters() {
             document.getElementById('searchInput').value = '';
             document.getElementById('statusFilter').value = '';
             document.getElementById('dateFilter').value = '';
+            filterJobSeekerRequests();
         }
 
         document.querySelector('.btn.btn-primary').addEventListener('click', function() {
             new bootstrap.Modal(document.getElementById('addJobseekerModal')).show();
         });
 
-        // Search resident
+     
         function findJSResident() {
             let search = document.getElementById('js_search').value;
 
@@ -359,7 +418,7 @@
                 });
         }
 
-        // Save Job Seeker request
+       
         function saveJobseeker() {
             const payload = {
                 residentID: document.getElementById('js_residentID').value
@@ -378,12 +437,11 @@
                     if (result.success) {
                         alert('Job Seeker request added successfully!');
                         resetJobSeekerModal();
-                        location.reload(); // reload to show new request in table
+                        location.reload(); 
                     }
                 });
         }
 
-        // Reset modal
         function resetJobSeekerModal() {
             document.getElementById('js_search').value = '';
             document.getElementById('js_residentID').value = '';
@@ -397,7 +455,7 @@
         });
 
         function loadJobSeekerRequests() {
-            fetch('/jobseeker/load') // your controller route
+            fetch('/jobseeker/load') 
                 .then(res => res.json())
                 .then(data => {
                     const tableBody = document.getElementById('js_tableBody');
@@ -477,7 +535,7 @@
                     if (data.success) {
                         alert(`Status updated to ${status}`);
 
-                        loadJobSeekerRequests(); // reload table
+                        loadJobSeekerRequests();
                     }
                 });
         }
@@ -503,7 +561,7 @@
                 .then(data => {
                     if (data.success) {
                         alert(data.message);
-                        loadJobSeekerRequests(); // reload table
+                        loadJobSeekerRequests(); 
                     } else {
                         alert(data.message);
                     }
@@ -511,14 +569,13 @@
         }
 
         function closeJobSeekerModal() {
-            // Reset modal fields
+           
             resetJobSeekerModal();
 
-            // Hide modal properly
+           
             const modalEl = document.getElementById('addJobseekerModal');
             const modal = bootstrap.Modal.getInstance(modalEl);
 
-            // If no instance exists, create one
             if (!modal) {
                 const newModal = new bootstrap.Modal(modalEl);
                 newModal.hide();

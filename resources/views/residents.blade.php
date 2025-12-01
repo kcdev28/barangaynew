@@ -825,7 +825,7 @@
             }
         });
 
-        // Show/Hide password functionality
+        
         document.getElementById('showPassword').addEventListener('change', function() {
             const passwordInput = document.getElementById('password');
             const confirmPasswordInput = document.getElementById('confirm_password');
@@ -839,7 +839,7 @@
             }
         });
 
-        // Password match validation
+        
         function validatePasswordMatch() {
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm_password').value;
@@ -860,7 +860,7 @@
         document.getElementById('password').addEventListener('input', validatePasswordMatch);
         document.getElementById('confirm_password').addEventListener('input', validatePasswordMatch);
 
-        // Open modal function
+        
         function openAddModal() {
             document.getElementById('residentForm').reset();
             document.getElementById('residentModalLabel').textContent = 'Add New Resident';
@@ -869,17 +869,17 @@
             document.getElementById('passwordError').style.display = 'none';
         }
 
-        // Save resident function
+        
         function saveResident() {
             const form = document.getElementById('residentForm');
 
-            // Check form validity
+            
             if (!form.checkValidity()) {
                 form.reportValidity();
                 return;
             }
 
-            // Validate password match
+            
             if (!validatePasswordMatch()) {
                 alert('Please make sure passwords match.');
                 return;
@@ -946,7 +946,7 @@
 
                     data.data.forEach(row => {
                         tbody.innerHTML += `
-                            <tr>
+                            <tr data-resident-id="${row.residentID}">
                                 <td>${row.firstname} ${row.lastname}</td>
                                 <td>${row.gender}</td>
                                 <td>${row.voter_status == 1 ? "Registered" : "Not-Registered"}</td>
@@ -973,7 +973,7 @@
 
         loadResidents();
 
-        // Handle View and Edit button clicks
+        
         document.addEventListener("click", function(e) {
             if (e.target.classList.contains("viewBtn")) {
                 const id = e.target.getAttribute("data-id");
@@ -986,7 +986,7 @@
             }
         });
 
-        // Store current resident ID for verify and update buttons
+        
         let currentResidentId = null;
 
         function loadResidentDetails(id) {
@@ -1002,17 +1002,17 @@
 
                     const data = response.data;
 
-                    // PROFILE IMAGE
+                  
                     document.getElementById("viewImage").src = data.profile_image ?
                         `/storage/${data.profile_image}` :
                         "/images/default-profile.png";
 
-                    // VERIFICATION IMAGE
+                    
                     document.getElementById("viewVerifyImage").src = data.verify_image ?
                         `/storage/${data.verify_image}` :
                         "/images/default-verification.jpg";
 
-                    // PERSONAL INFO
+                    
                     document.getElementById("viewFirstname").innerText = data.firstname || "";
                     document.getElementById("viewMiddlename").innerText = data.middlename || "N/A";
                     document.getElementById("viewLastname").innerText = data.lastname || "";
@@ -1029,17 +1029,17 @@
                     document.getElementById("viewEmploymentStatus").innerText = data.employment_status || "N/A";
                     document.getElementById("viewSpecialGroup").innerText = (data.special_group && data.special_group.status) ? data.special_group.status : "N/A";
 
-                    // ADDRESS
+                   
                     document.getElementById("viewHouseNo").innerText = data.house_no || "";
                     document.getElementById("viewStreet").innerText = data.street || "";
                     document.getElementById("viewArea").innerText = (data.area && data.area.area_name) ? data.area.area_name : "N/A";
 
-                    // Full Address
+                 
                     const areaName = (data.area && data.area.area_name) ? data.area.area_name : "";
                     document.getElementById("viewFullAddress").innerText =
                         `${data.house_no || ""}, ${data.street || ""}, ${areaName}`;
 
-                    // Update Verify Button based on status
+                    
                     const verifyBtn = document.getElementById("verifyBtn");
                     if (data.status === 'Verified') {
                         verifyBtn.disabled = true;
@@ -1053,7 +1053,7 @@
                         verifyBtn.classList.add('btn-success');
                     }
 
-                    // Show modal
+                 
                     const modal = new bootstrap.Modal(document.getElementById("viewResidentModal"));
                     modal.show();
                 })
@@ -1063,7 +1063,7 @@
                 });
         }
 
-        // Load Resident Data for Editing
+        
 
         function loadResidentForEdit(id) {
             currentResidentId = id;
@@ -1077,12 +1077,12 @@
                     }
 
                     const data = response.data;
-                    console.log("Loaded data:", data); // Debug line
+                    console.log("Loaded data:", data); 
 
-                    // Get the form inside editResidentModal
+                   
                     const modal = document.getElementById('editResidentModal');
 
-                    // Populate form fields - make sure these IDs exist in your editResidentModal
+                    
                     modal.querySelector('#firstname').value = data.firstname || '';
                     modal.querySelector('#middlename').value = data.middlename || '';
                     modal.querySelector('#lastname').value = data.lastname || '';
@@ -1103,13 +1103,13 @@
                     modal.querySelector('#special_group_no').value = data.special_group_no || '';
                     modal.querySelector('#email').value = data.email || '';
 
-                    // Make password fields optional for editing
+                   
                     modal.querySelector('#password').required = false;
                     modal.querySelector('#confirm_password').required = false;
                     modal.querySelector('#password').value = '';
                     modal.querySelector('#confirm_password').value = '';
 
-                    // Enable precinct field if age >= 18
+                 
                     const dob = new Date(data.date_of_birth);
                     const today = new Date();
                     let age = today.getFullYear() - dob.getFullYear();
@@ -1119,10 +1119,9 @@
                     }
                     modal.querySelector('#precinct_no').disabled = age < 18;
 
-                    // Update modal title
                     modal.querySelector('#residentModalLabel').textContent = 'Edit Resident';
 
-                    // Show modal
+                    
                     const bootstrapModal = new bootstrap.Modal(modal);
                     bootstrapModal.show();
                 })
@@ -1131,11 +1130,10 @@
                     alert("Error loading resident data for editing.");
                 });
         }
-        // Update Resident Function
+       
         function updateResident() {
             const form = document.getElementById('updateresidentForm');
 
-            // Check form validity
             if (!form.checkValidity()) {
                 form.reportValidity();
                 return;
@@ -1170,14 +1168,14 @@
                     if (data.success) {
                         alert(data.message);
 
-                        // Close modal
+                      
                         const modal = bootstrap.Modal.getInstance(document.getElementById('editResidentModal'));
                         modal.hide();
 
-                        // Reset form
+                       
                         form.reset();
 
-                        // Reload residents table
+                     
                         loadResidents();
                     } else {
                         let errorMessage = data.message;
@@ -1200,7 +1198,7 @@
                 });
         }
 
-        // Verify Button Click Handler
+        
         document.getElementById("verifyBtn").addEventListener("click", function() {
             if (!currentResidentId) {
                 alert("No resident selected!");
@@ -1266,7 +1264,7 @@
                 .then(data => {
                     if (data.success) {
                         alert("Resident deleted successfully.");
-                        loadResidents(); // refresh table
+                        loadResidents(); 
                     } else {
                         alert("Delete failed.");
                     }
@@ -1277,11 +1275,64 @@
                 });
         }
 
+        document.getElementById('searchInput').addEventListener('input', filterResidents);
+        document.getElementById('statusFilter').addEventListener('change', filterResidents);
+        document.getElementById('genderFilter').addEventListener('change', filterResidents);
+        document.getElementById('voterFilter').addEventListener('change', filterResidents);
+
+       
+        function filterResidents() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+            const statusValue = document.getElementById('statusFilter').value;
+            const genderValue = document.getElementById('genderFilter').value;
+            const voterValue = document.getElementById('voterFilter').value;
+
+            const rows = document.querySelectorAll('#tableBody tr');
+            let visibleCount = 0;
+
+            rows.forEach(row => {
+                const cells = row.cells;
+                const name = cells[0].textContent.toLowerCase();
+                const gender = cells[1].textContent;
+                const voterStatus = cells[2].textContent;
+                const status = cells[3].textContent;
+                const residentId = row.getAttribute('data-resident-id')
+              
+                const matchesSearch = name.includes(searchValue) || residentId.includes(searchValue);
+                const matchesStatus = !statusValue || status === statusValue;
+                const matchesGender = !genderValue || gender === genderValue;
+                const matchesVoter = !voterValue ||
+                    (voterValue === '1' && voterStatus === 'Registered') ||
+                    (voterValue === '0' && voterStatus === 'Not-Registered');
+
+           
+                if (matchesSearch && matchesStatus && matchesGender && matchesVoter) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+          
+            document.getElementById('recordCount').innerText = visibleCount;
+
+        
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+
+      
         function resetFilters() {
             document.getElementById('searchInput').value = '';
             document.getElementById('statusFilter').value = '';
             document.getElementById('genderFilter').value = '';
             document.getElementById('voterFilter').value = '';
+            filterResidents(); 
         }
     </script>
 </body>

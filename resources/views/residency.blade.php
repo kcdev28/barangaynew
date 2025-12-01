@@ -390,10 +390,67 @@
             }
         }
 
+        document.getElementById('searchInput').addEventListener('input', filterResidencyRequests);
+        document.getElementById('statusFilter').addEventListener('change', filterResidencyRequests);
+        document.getElementById('dateFilter').addEventListener('change', filterResidencyRequests);
+
+        function filterResidencyRequests() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+            const statusValue = document.getElementById('statusFilter').value;
+            const dateValue = document.getElementById('dateFilter').value;
+
+            const rows = document.querySelectorAll('#tableBody tr');
+            let visibleCount = 0;
+
+            rows.forEach(row => {
+                const cells = row.cells;
+                const name = cells[0].textContent.toLowerCase();
+                const purpose = cells[1].textContent.toLowerCase();
+                const dateIssued = cells[2].textContent.trim();
+                const status = cells[3].textContent.trim();
+
+                // Check all filter conditions
+                const matchesSearch = name.includes(searchValue) || purpose.includes(searchValue);
+                const matchesStatus = !statusValue || status === statusValue;
+
+                // Date filter - match if dates are equal
+                let matchesDate = true;
+                if (dateValue && dateIssued) {
+                    // Convert date issued to YYYY-MM-DD format for comparison
+                    const issuedDate = new Date(dateIssued);
+                    const filterDate = new Date(dateValue);
+
+                    matchesDate = issuedDate.toDateString() === filterDate.toDateString();
+                } else if (dateValue && !dateIssued) {
+                    matchesDate = false;
+                }
+
+                // Show/hide row based on all conditions
+                if (matchesSearch && matchesStatus && matchesDate) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            // Update record count
+            document.getElementById('recordCount').textContent = visibleCount;
+
+            // Show/hide "no results" message
+            const noResults = document.getElementById('noResults');
+            if (visibleCount === 0) {
+                noResults.style.display = 'block';
+            } else {
+                noResults.style.display = 'none';
+            }
+        }
+
         function resetFilters() {
             document.getElementById('searchInput').value = '';
             document.getElementById('statusFilter').value = '';
             document.getElementById('dateFilter').value = '';
+            filterResidencyRequests();
         }
 
 

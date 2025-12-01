@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ResidentModel;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
@@ -34,6 +35,7 @@ class ResidentController extends Controller
                 'specialGroup:specialID,status',
                 'area:areaID,area_name'
             ])
+            ->orderBy('firstname', 'ASC')
             ->get();
 
         return response()->json([
@@ -82,9 +84,9 @@ class ResidentController extends Controller
                 'gender' => 'required',
                 'civil_no' => 'required',
                 'contact_no' => 'required',
-                'religion_no' => 'required',
+                'religion_no' => 'nullable',
                 'citizenship' => 'nullable',
-                'voter_status' => 'required',
+                'voter_status' => 'nullable',
                 'precinct_no' => 'nullable',
                 'occupation' => 'nullable',
                 'employment_status' => 'nullable',
@@ -154,8 +156,8 @@ class ResidentController extends Controller
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'status' => 'Pending',
-                'created_at' => now(),
-                'updated_at' => now()
+                'created_at' => Carbon::now()
+              
             ];
 
 
@@ -231,7 +233,7 @@ class ResidentController extends Controller
                 'middlename' => 'nullable',
                 'lastname' => 'required',
                 'suffix' => 'nullable',
-                'profile_image' => 'nullable|file|image',
+                'profile_image' => 'nullable',
                 'house_no' => 'required',
                 'street' => 'required',
                 'area_no' => 'required',
@@ -239,14 +241,14 @@ class ResidentController extends Controller
                 'gender' => 'required',
                 'civil_no' => 'required',
                 'contact_no' => 'required',
-                'religion_no' => 'required',
+                'religion_no' => 'nullable',
                 'citizenship' => 'nullable',
-                'voter_status' => 'required',
+                'voter_status' => 'nullable',
                 'precinct_no' => 'nullable',
                 'occupation' => 'nullable',
                 'employment_status' => 'nullable',
                 'special_group_no' => 'nullable',
-                'verify_img' => 'nullable|file|image',
+                'verify_img' => 'nullable',
                 'email' => [
                     'required',
                     Rule::unique('tbl_residents', 'email')->ignore($id, 'residentID'),
@@ -316,6 +318,7 @@ class ResidentController extends Controller
             $resident->special_group_no = $request->special_group_no;
             $resident->verify_image = $verifyImagePath;
             $resident->email = $request->email;
+            
 
             // Only update password if provided
             if ($request->filled('password')) {

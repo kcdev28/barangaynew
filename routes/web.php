@@ -10,7 +10,9 @@ use App\Http\Controllers\JobSeekerController;
 
 Route::get('/', function () {
     return view('landingPage');
-});
+})->name('landingPage');;
+
+
 
 //login routes
 Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -18,7 +20,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 //register 
 Route::get('/register', [dropdownController::class, 'create'])->name('register');
-Route::post('/register-resident', [ResidentController::class, 'store'])->name('resident.store');
+Route::post('/register', [ResidentController::class, 'store'])->name('resident.store');
 
 
 //admin routes

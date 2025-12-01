@@ -13,12 +13,12 @@
 
 <body>
 
-    <!-- DateTime Bar -->
+  
     <div class="datetime-bar">
         <span id="currentDateTime"></span>
     </div>
 
-    <!-- Navbar with Menu Only -->
+   
     <nav class="navbar navbar-custom">
         <div class="container-fluid px-4">
             <div class="d-flex align-items-center gap-3">
@@ -26,20 +26,20 @@
                     ☰ Menu
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img src="images/sanagustinlogo.png" style="width: 50px;" alt="">
+                    <img src="images/sanagustinlogo.png"  alt="">
                     San Agustin E-Services
                 </a>
             </div>
         </div>
     </nav>
 
-    <!-- Side Menu -->
+    
     <div id="sideMenu" class="side-menu">
         <button class="close-menu" id="closeMenuBtn">
             &times;
         </button>
         <ul class="menu-list">
-            <li><a href="#">Home</a></li>
+            <li><a href="{{ route('landingPage') }}">Home</a></li>
             <li><a href="#">Barangay ID Application</a></li>
             <li><a href="#">Barangay Clearance</a></li>
             <li><a href="#">Certificate Of Indigency</a></li>
@@ -87,18 +87,18 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="firstName" class="form-label">First Name *</label>
-                                        <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                        <input type="text" class="form-control" id="firstName" name="firstname" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="lastName" class="form-label">Last Name *</label>
-                                        <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                        <input type="text" class="form-control" id="lastName" name="lastname" required>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="middleName" class="form-label">Middle Name</label>
-                                        <input type="text" class="form-control" id="middleName" name="middleName">
+                                        <input type="text" class="form-control" id="middleName" name="middlename">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="suffix" class="form-label">Suffix</label>
@@ -116,7 +116,7 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="dateOfBirth" class="form-label">Date of Birth *</label>
-                                        <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth" required>
+                                        <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="gender" class="form-label">Gender *</label>
@@ -132,7 +132,7 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="civilStatus" class="form-label">Civil Status</label>
-                                        <select class="form-select" id="civilStatus" name="civilStatus">
+                                        <select class="form-select" id="civilStatus" name="civil_no">
                                             <option value="">Select Civil Status</option>
                                             @foreach($civilStatuses as $status)
                                             <option value="{{ $status->civilID }}">{{ $status->civil_stat }}</option>
@@ -142,22 +142,23 @@
 
                                     <div class="col-md-6">
                                         <label for="contactNo" class="form-label">Contact No. *</label>
-                                        <input type="tel" class="form-control" id="contactNo" name="contactNo" required>
+                                        <input type="tel" class="form-control" id="contactNo" name="contact_no" required>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="religion" class="form-label">Religion</label>
-                                        <select class="form-select" id="religion" name="religion">
+                                        <select class="form-select" id="religion" name="religion_no">
                                             @foreach($religions as $religion)
+                                             <option value="">Select Religion</option>
                                             <option value="{{ $religion->religionID }}">{{ $religion->religion }}</option>
                                             @endforeach
                                         </select>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="voterStatus" class="form-label">Voter Status</label>
-                                        <select class="form-select" id="voterStatus" name="voterStatus">
+                                        <select class="form-select" id="voterStatus" name="voter_status">
                                             <option value="">Select Voter Status</option>
                                             <option value="1">Registered Voter</option>
                                             <option value="0">Non-Registered</option>
@@ -169,7 +170,7 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="precintNo" class="form-label">Precinct No.</label>
-                                        <input type="text" class="form-control" id="precintNo" name="precintNo" disabled>
+                                        <input type="text" class="form-control" id="precintNo" name="precint_no" disabled>
                                         <small class="text-muted">Available for 18 years old and above</small>
                                     </div>
                                     <div class="col-md-6">
@@ -181,7 +182,7 @@
                                 <div class="row mb-3">
                                     <div class="col-md-6">
                                         <label for="employmentStatus" class="form-label">Employment Status</label>
-                                        <select class="form-select" id="employmentStatus" name="employmentStatus">
+                                        <select class="form-select" id="employmentStatus" name="employment_status">
                                             <option value="">Select Employment Status</option>
                                             <option value="Employed">Employed</option>
                                             <option value="Self-Employed">Self-Employed</option>
@@ -192,7 +193,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="specialGroupStatus" class="form-label">Special Group Status</label>
-                                        <select class="form-select" id="specialGroupStatus" name="specialGroupStatus">
+                                        <select class="form-select" id="specialGroupStatus" name="special_group_no">
                                              <option value="">Select Special Group Status</option>
                                             @foreach($specialStatuses as $group)
                                             <option value="{{ $group->specialID }}">{{ $group->status }}</option>
@@ -214,7 +215,7 @@
 
                                 <div class="mb-3">
                                     <label for="profilePicture" class="form-label">Profile Picture (Optional)</label>
-                                    <input type="file" class="form-control" id="profilePicture" name="profilePicture" accept="image/*">
+                                    <input type="file" class="form-control" id="profilePicture" name="profile_image" accept="image/*">
                                     <small class="text-muted">Accepted formats: JPG, PNG</small>
                                     <div class="profile-preview mt-3" id="profilePreview" style="display:none;">
                                         <img id="profilePreviewImg" style="max-width: 200px; max-height: 200px; border-radius: 6px; border: 1px solid #ccc;">
@@ -226,7 +227,7 @@
                                     <div class="verification-id-container mb-3">
                                         <div id="idPreview" class="id-preview"></div>
                                     </div>
-                                    <input type="file" class="form-control" id="verificationId" name="verificationId" accept="image/*">
+                                    <input type="file" class="form-control" id="verificationId" name="verify_img" accept="image/*">
                                     <small class="text-muted">Accepted formats: JPG, PNG</small>
                                 </div>
                             </div>
@@ -236,7 +237,7 @@
                     <div class="tab-pane fade" id="address" role="tabpanel" aria-labelledby="address-tab">
                         <div class="mb-3">
                             <label for="houseNumber" class="form-label">House Number *</label>
-                            <input type="text" class="form-control" id="houseNumber" name="houseNumber" required>
+                            <input type="text" class="form-control" id="houseNumber" name="house_no" required>
                         </div>
                         <div class="mb-3">
                             <label for="street" class="form-label">Street *</label>
@@ -245,7 +246,7 @@
 
                         <div class="mb-3">
                             <label for="area" class="form-label">Area *</label>
-                            <select class="form-select" id="area" name="area" required>
+                            <select class="form-select" id="area" name="area_no" required>
                                  <option value="">Select Area</option>
                                 @foreach($areas as $area)
                                 <option value="{{ $area->areaID }}">{{ $area->area_name }}</option>
@@ -257,7 +258,7 @@
                     <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
                         <div class="mb-3">
                             <label for="email" class="form-label">Username *</label>
-                            <input type="username" class="form-control" name="username" id="username" required>
+                            <input type="username" class="form-control" name="email" id="username" required>
                         </div>
                         <div class="mb-3 password-toggle">
                             <label for="password" class="form-label">Password *</label>
@@ -267,7 +268,7 @@
 
                         <div class="mb-3 password-toggle">
                             <label for="confirmPassword" class="form-label">Confirm Password *</label>
-                            <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                            <input type="password" class="form-control" id="confirmPassword" name="confirm_password" required>
                             <button type="button" class="password-toggle-btn" data-target="confirmPassword">Show</button>
                             <div id="passwordMismatchMessage" class="text-danger mt-1" style="display: none; font-size: 0.875rem;">
                                 Passwords do not match
@@ -513,7 +514,7 @@
                 showTab(0);
 
                 setTimeout(() => {
-                    window.location.href = "{{ route('login') }}";
+                    window.location.href = "{{ route('landingPage') }}";
                 }, 1500);
 
             } catch (error) {

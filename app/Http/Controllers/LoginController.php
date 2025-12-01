@@ -24,15 +24,14 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-        // Try to authenticate from vw_admins first
+
         $admin = DB::table('vw_admins')
             ->where('email', $email)
             ->first();
 
+
         if ($admin) {
-            // Verify password for admin
-            if ($admin->password) {
-                // Store admin session data
+            if (Hash::check($password, $admin->password)) {
                 Session::put('user_id', $admin->userID);
                 Session::put('user_name', $admin->fullname);
                 Session::put('user_type', 'admin');
@@ -42,22 +41,22 @@ class LoginController extends Controller
             }
         }
 
-        // If not found in admin, try tbl_residents (for future implementation)
-        // $resident = DB::table('tbl_residents')
-        //     ->where('email', $email)
-        //     ->first();
 
-        // if ($resident) {
-        //     if (Hash::check($password, $resident->password)) {
-        //         Session::put('user_id', $resident->id);
-        //         Session::put('user_name', $resident->full_name);
-        //         Session::put('user_type', 'resident');
-        //         Session::put('email', $resident->email);
+        $resident = DB::table('tbl_residents')
+            ->where('email', $email)
+            ->first();
 
-        //         return redirect()->route('resident.dashboard')
-        //             ->with('success', 'Welcome back, ' . $resident->full_name);
-        //     }
-        // }
+        if ($resident) {
+            if (Hash::check($password, $resident->password)) {
+                Session::put('user_id', $resident->residentID);
+                Session::put('user_name', $resident->firstname . ' ' . $resident->lastname);
+                Session::put('user_type', 'resident');
+                Session::put('email', $resident->email);
+
+                return redirect()->route('landingPage')
+                    ->with('success', 'Welcome back, ' . $resident->firstname . ' ' . $resident->lastname);
+            }
+        }
 
         // If authentication fails
         return back()

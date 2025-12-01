@@ -19,25 +19,45 @@
 
     <nav class="navbar">
         <div class="navbar-container">
-
             <div class="navbar-left">
                 <button class="btn-menu" id="menuBtn">
                     ☰ Menu
                 </button>
-                <a class="navbar-brand" href="#">
-                    San Agustin E-Services
-                </a>
             </div>
-
 
             <div class="navbar-center">
                 <img src="{{ asset('images/sanagustinlogo.png') }}" alt="San Agustin Logo" class="navbar-logo">
             </div>
 
-
             <div class="navbar-right">
+                @if(Session::has('user_id') && Session::get('user_type') === 'resident')
+                <!-- User Dropdown for logged-in residents -->
+                <div class="user-dropdown">
+                    <button class="user-dropdown-toggle" id="userDropdownBtn">
+                        <img src="{{ asset('icons/user-green.png') }}" alt="User" class="user-icon">
+
+                    </button>
+                    <div class="user-dropdown-menu" id="userDropdownMenu">
+                        <div class="user-info">
+                            <strong>{{ Session::get('user_name') }}</strong>
+                        </div>
+                        <hr class="dropdown-divider">
+                        <a href="" class="dropdown-item">
+                            View Profile
+                        </a>
+                        <form action="{{ route('logout') }}" method="POST" id="logoutForm">
+                            @csrf
+                            <button type="submit" class="dropdown-item logout-item">
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                @else
+                <!-- Login and Register buttons for guests -->
                 <button class="btn-auth btn-login" id="loginBtn">Login</button>
                 <a href="{{ route('register') }}" class="btn-auth btn-register">Register</a>
+                @endif
             </div>
         </div>
     </nav>
@@ -76,7 +96,7 @@
             &times;
         </button>
         <ul class="menu-list">
-            <li><a href="#">Home</a></li>
+            <li><a href="{{ route('landingPage') }}">Home</a></li>
             <li><a href="#">Barangay ID Application</a></li>
             <li><a href="#">Barangay Clearance</a></li>
             <li><a href="#">Certificate Of Indigency</a></li>
@@ -221,93 +241,96 @@
 
 
     <script>
-        function updateDateTime() {
-            const now = new Date();
-            const options = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            document.getElementById('currentDateTime').textContent = now.toLocaleDateString('en-US', options);
-        }
+        document.addEventListener('DOMContentLoaded', function() {
 
-        updateDateTime();
-        setInterval(updateDateTime, 1000);
-
-
-        const menuBtn = document.getElementById('menuBtn');
-        const closeMenuBtn = document.getElementById('closeMenuBtn');
-        const sideMenu = document.getElementById('sideMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const menuLinks = document.querySelectorAll('.menu-list li a');
-
-        menuBtn.addEventListener('click', () => {
-            sideMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-        });
-
-        closeMenuBtn.addEventListener('click', () => {
-            sideMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        });
-
-        menuOverlay.addEventListener('click', () => {
-            sideMenu.classList.remove('active');
-            menuOverlay.classList.remove('active');
-        });
-
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                sideMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-            });
-        });
-
-
-        const serviceCards = document.querySelectorAll('.service-card');
-        serviceCards.forEach(card => {
-            card.addEventListener('click', function() {
-                const serviceName = this.querySelector('.service-title').textContent;
-                console.log('Clicked service:', serviceName);
-            });
-        });
-
-        const showPasswordCheckbox = document.getElementById('showPassword');
-        const passwordInput = document.getElementById('password');
-
-        showPasswordCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                passwordInput.setAttribute('type', 'text');
-            } else {
-                passwordInput.setAttribute('type', 'password');
+            function updateDateTime() {
+                const now = new Date();
+                const options = {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                };
+                document.getElementById('currentDateTime').textContent =
+                    now.toLocaleDateString('en-US', options);
             }
-        });
 
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
 
-        const loginBtn = document.getElementById('loginBtn');
-        const loginModal = document.getElementById('loginModal');
-        const closeLoginModal = document.getElementById('closeLoginModal');
+            const menuBtn = document.getElementById('menuBtn');
+            const closeMenuBtn = document.getElementById('closeMenuBtn');
+            const sideMenu = document.getElementById('sideMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const menuLinks = document.querySelectorAll('.menu-list li a');
 
-        loginBtn.addEventListener('click', () => {
-            loginModal.classList.add('active');
-        });
+            if (menuBtn && closeMenuBtn && sideMenu && menuOverlay) {
+                menuBtn.addEventListener('click', () => {
+                    sideMenu.classList.add('active');
+                    menuOverlay.classList.add('active');
+                });
 
-        closeLoginModal.addEventListener('click', () => {
-            loginModal.classList.remove('active');
-        });
+                closeMenuBtn.addEventListener('click', () => {
+                    sideMenu.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                });
 
+                menuOverlay.addEventListener('click', () => {
+                    sideMenu.classList.remove('active');
+                    menuOverlay.classList.remove('active');
+                });
 
-        loginModal.addEventListener('click', (e) => {
-            if (e.target === loginModal) {
-                loginModal.classList.remove('active');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        sideMenu.classList.remove('active');
+                        menuOverlay.classList.remove('active');
+                    });
+                });
             }
-        });
 
-       
+            const showPasswordCheckbox = document.getElementById('showPassword');
+            const passwordInput = document.getElementById('password');
+            if (showPasswordCheckbox && passwordInput) {
+                showPasswordCheckbox.addEventListener('change', function() {
+                    passwordInput.type = this.checked ? 'text' : 'password';
+                });
+            }
+
+            const loginBtn = document.getElementById('loginBtn');
+            const loginModal = document.getElementById('loginModal');
+            const closeLoginModal = document.getElementById('closeLoginModal');
+
+            if (loginBtn && loginModal && closeLoginModal) {
+                loginBtn.addEventListener('click', () => loginModal.classList.add('active'));
+                closeLoginModal.addEventListener('click', () => loginModal.classList.remove('active'));
+                loginModal.addEventListener('click', e => {
+                    if (e.target === loginModal) loginModal.classList.remove('active');
+                });
+            }
+
+            const userDropdownBtn = document.getElementById('userDropdownBtn');
+            const userDropdownMenu = document.getElementById('userDropdownMenu');
+
+            if (userDropdownBtn && userDropdownMenu) {
+                userDropdownBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    userDropdownMenu.classList.toggle('show');
+                    this.classList.toggle('active');
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (!userDropdownBtn.contains(e.target) &&
+                        !userDropdownMenu.contains(e.target)) {
+                        userDropdownMenu.classList.remove('show');
+                        userDropdownBtn.classList.remove('active');
+                    }
+                });
+            }
+
+        });
     </script>
 
 </body>
