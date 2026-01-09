@@ -7,7 +7,7 @@
     <title>San Agustin E-Services</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <link rel="stylesheet" href="{{ asset('css/landingPage.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/aboutUsPage.css') }}">
 
 </head>
 
@@ -28,43 +28,18 @@
             </div>
 
             <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="#home">HOME</a></li>
+                <li><a href="{{ route('landingPage') }}">HOME</a></li>
                 <li><a href="{{ route('aboutUsPage') }}">ABOUT US</a></li>
                 <li><a href="#services">SERVICES</a></li>
                 <li><a href="#announcements">ANNOUNCMENTS</a></li>
                 <li><a href="#contact">CONTACT US</a></li>
-                @if(Session::has('user_id') && Session::get('user_type') === 'resident')
-                    <!-- User Dropdown -->
-                    <li class="user-dropdown">
-                        <button class="user-dropdown-btn" id="userDropdownBtn">
-                            MY ACCOUNT
-                           
-                        </button>
-                        <div class="user-dropdown-menu" id="userDropdownMenu">
-                            <div class="dropdown-header">
-                                <p class="dropdown-user-name">{{ Session::get('user_name') }}</p>
-                            </div>
-                            <a href="#" class="dropdown-item">View Profile</a>
-                            <a href="#" class="dropdown-item">View Request Status</a>
-                            <div class="dropdown-divider"></div>
-                            <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
-                                @csrf
-                                <button type="submit" class="dropdown-item logout" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
-                                    Logout
-                                </button>
-                            </form>
-                        </div>
-                    </li>
-                @else
-                    <!-- Register and Login buttons -->
-                    <li><a href="{{ route('register') }}" class="register-btn" style="color: #1b7f3b;">REGISTER</a></li>
-                    <li><a href="#login" class="login-btn" id="loginBtn" style="color: #1b7f3b;">LOGIN</a></li>
-                @endif
+                <li><a href="{{ route('register') }}" class="register-btn" style="color: #1b7f3b;">REGISTER</a></li>
+                <li><a href="#login" class="login-btn" id="loginBtn" style="color: #1b7f3b;">LOGIN</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- 2nd Navbar Structure -->
+
 
     <!-- Login Modal -->
     <div id="loginModal" class="login-modal">
@@ -89,105 +64,160 @@
                         <input type="checkbox" id="showPassword">
                         <label for="showPassword">Show Password</label>
                     </div>
-                     @if($errors->any())
-                        <div class="alert alert-danger">
-                            {{ $errors->first() }}
-                        </div>
-                    @endif
                     <button type="submit" class="btn-login-submit">Login</button>
                 </form>
             </div>
         </div>
     </div>
 
-    <!-- Carousel -->
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="{{ asset('images/home.JPG') }}" class="d-block w-100" alt="Barangay Hall">
-                <div class="carousel-overlay">
-                    <div class="carousel-text">
-                        <h1>Welcome to Barangay San Agustin</h1>
-                    </div>
-                </div>
+    <!-- About Us -->
+    <section class="about-section">
+        <div class="about-section-container">
+            <div class="about-image">
+                <img src="{{ asset('images/home1.JPG') }}" alt="">
             </div>
-            <div class="carousel-item">
-                <img src="{{ asset('images/home1.jpg') }}" class="d-block w-100" alt="Community">
-                <div class="carousel-overlay">
-                    <div class="carousel-text">
-                        <h1>Serving Our Community</h1>
-                        <p>Online Services Made Easy</p>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="{{ asset('images/home2.JPG') }}" class="d-block w-100" alt="Services">
-                <div class="carousel-overlay">
-                    <div class="carousel-text">
-                        <h1>Your Trusted Partner</h1>
-                        <p>Quality Services for All</p>
-                    </div>
-                </div>
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>Barangay San Agustin is located at Patnubay St., Novaliches, Quezon City. The barangay was officially established on June 25, 1975, the barangay has since played an important role as the basic political unit in the community, serving as the frontline institution for delivering government services and programs to its residents. Barangay San Agustin is divided into several Sitios or distinct areas, specifically: Clemente Subdivision, Bagong Tuklas, St. Francis Village Subdivision, Susano Road, T.S Cruz Subdivision, Millionaires Village, Some part of Greenfields-1, Greenfields-3, Blueville Subdivision, and De Jesus Compound.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/card.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Barangay ID Application</h5>
-                    </div>
+
+    <!-- Elected Officials Section -->
+    <section class="elected-officials-section">
+        <div class="elected-officials-container">
+            <h2 class="officials-title">Elected Officials</h2>
+
+            <!-- Punong Barangay -->
+            <div class="official-card punong-barangay">
+                <div class="official-avatar">
+                    <img src="{{ asset('images/default-profile.png') }}" alt="Punong Barangay">
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/file.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Barangay Clearance</h5>
+                <h3 class="official-name">FABIOY Y. ORTEGA</h3>
+                <p class="official-position punong">PUNONG BARANGAY</p>
+            </div>
+
+            <!-- Secretary and Treasurer -->
+            <div class="officials-row-two">
+                <div class="official-card">
+                    <div class="official-avatar">
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Secretary">
                     </div>
+                    <h3 class="official-name">PATRIA B. UNTALAN</h3>
+                    <p class="official-position secretary">BRGY. SECRETARY</p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/real-estate.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Certificate of Residency</h5>
+
+                <div class="official-card">
+                    <div class="official-avatar">
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Treasurer">
                     </div>
+                    <h3 class="official-name">DANIEL O. CLARIN</h3>
+                    <p class="official-position treasurer">BRGY. TREASURER</p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/gloves.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Certificate of Indigency</h5>
+            </div>
+
+            <!-- Kagawad Row 1 -->
+            <div class="officials-row">
+                <div class="official-card">
+                    <div class="official-avatar">
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
                     </div>
+                    <h3 class="official-name">GERALD M. LAGATOC</h3>
+                    <p class="official-position kagawad">BRGY. KAGAWAD</p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/jobseeker.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">First Time Job Seeker</h5>
+
+                <div class="official-card">
+                    <div class="official-avatar">
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
                     </div>
+                    <h3 class="official-name">EDMUNDO R. OSEA JR.</h3>
+                    <p class="official-position kagawad">BRGY. KAGAWAD</p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/jobseeker.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Business Permit</h5>
+
+                <div class="official-card">
+                    <div class="official-avatar">
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
                     </div>
+                    <h3 class="official-name">ROBERT R. PERALTA</h3>
+                    <p class="official-position kagawad">BRGY. KAGAWAD</p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/approval.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Blotter Report</h5>
+
+                <div class="official-card">
+                    <div class="official-avatar">
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
                     </div>
+                    <h3 class="official-name">ABIGAIL JEZREEL O. MILLAR</h3>
+                    <p class="official-position kagawad">BRGY. KAGAWAD</p>
                 </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/family.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Household Information</h5>
+            </div>
+
+            <!-- Kagawad Row 2 -->
+            <div class="officials-row">
+                <div class="official-card">
+                    <div class="official-avatar">
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
                     </div>
+                    <h3 class="official-name">ALEJANDRO F. PALMA</h3>
+                    <p class="official-position kagawad">BRGY. KAGAWAD</p>
+                </div>
+
+                <div class="official-card">
+                    <div class="official-avatar">
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
+                    </div>
+                    <h3 class="official-name">LILIBETH P. MATA</h3>
+                    <p class="official-position kagawad">BRGY. KAGAWAD</p>
+                </div>
+
+                <div class="official-card">
+                    <div class="official-avatar">
+                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
+                    </div>
+                    <h3 class="official-name">JASMIN D. GILBUENA</h3>
+                    <p class="official-position kagawad">BRGY. KAGAWAD</p>
+                </div>
+
+                <div class="official-card">
+                    <div class="official-avatar">
+                        <img src="{{ asset('images/default-profile.png') }}" alt="SK Chairperson">
+                    </div>
+                    <h3 class="official-name">RACHEAL ANN LAUCHENCO</h3>
+                    <p class="official-position sk-chair">SK CHAIRPERSON</p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="mission-vision-section">
+        <div class="mission-vision-container">
+            <!-- Mission -->
+            <div class="mission-box">
+                <div class="mission-content">
+                    <h2>Our Mission</h2>
+                    <p>To formulate and enforce transaparent plans, programs and regulation or the protection and interest of the community with regards to environment, educationm infrastructure, health, social services, moral, financial and peace and order.</p>
+                </div>
+                <div class="mission-image">
+                    <img src="{{ asset('images/barangaymission.png') }}" alt="">
+                </div>
+            </div>
+
+            <!-- Vision -->
+            <div class="vision-box">
+                <div class="vision-image">
+                    <img src="{{ asset('images/barangayvision.png') }}" alt="">
+                </div>
+                <div class="vision-content">
+                    <h2>Our Vision</h2>
+                    <p>Barangay San Agustin envisions to be a community of Law-Abiding, productive and healthy individuals, a community that is God-fearing, progressice, drug-freem clean, environmentally aware, ready to help others, empowered consituents and collectively participating in decision-makin, gearing towards good governance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
 
     <!-- Footer -->
     <footer>
@@ -229,7 +259,8 @@
 
 
     <script>
-       document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+
             function updateDateTime() {
                 const now = new Date();
                 const options = {
@@ -268,7 +299,6 @@
                 });
             }
 
-            // User Dropdown functionality
             const userDropdownBtn = document.getElementById('userDropdownBtn');
             const userDropdownMenu = document.getElementById('userDropdownMenu');
 
@@ -287,7 +317,9 @@
                     }
                 });
             }
+
         });
+
 
         function toggleMenu() {
             const menu = document.getElementById('navbarMenu');
@@ -298,4 +330,3 @@
 </body>
 
 </html>
-

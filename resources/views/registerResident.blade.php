@@ -13,12 +13,12 @@
 
 <body>
 
-  
+
     <div class="datetime-bar">
         <span id="currentDateTime"></span>
     </div>
 
-   
+
     <nav class="navbar navbar-custom">
         <div class="container-fluid px-4">
             <div class="d-flex align-items-center gap-3">
@@ -26,14 +26,14 @@
                     ☰ Menu
                 </button>
                 <a class="navbar-brand" href="#">
-                    <img src="images/sanagustinlogo.png"  alt="">
+                    <img src="images/sanagustinlogo.png" alt="">
                     San Agustin E-Services
                 </a>
             </div>
         </div>
     </nav>
 
-    
+
     <div id="sideMenu" class="side-menu">
         <button class="close-menu" id="closeMenuBtn">
             &times;
@@ -151,7 +151,7 @@
                                         <label for="religion" class="form-label">Religion</label>
                                         <select class="form-select" id="religion" name="religion_no">
                                             @foreach($religions as $religion)
-                                             <option value="">Select Religion</option>
+                                            <option value="">Select Religion</option>
                                             <option value="{{ $religion->religionID }}">{{ $religion->religion }}</option>
                                             @endforeach
                                         </select>
@@ -194,7 +194,7 @@
                                     <div class="col-md-6">
                                         <label for="specialGroupStatus" class="form-label">Special Group Status</label>
                                         <select class="form-select" id="specialGroupStatus" name="special_group_no">
-                                             <option value="">Select Special Group Status</option>
+                                            <option value="">Select Special Group Status</option>
                                             @foreach($specialStatuses as $group)
                                             <option value="{{ $group->specialID }}">{{ $group->status }}</option>
                                             @endforeach
@@ -247,7 +247,7 @@
                         <div class="mb-3">
                             <label for="area" class="form-label">Area *</label>
                             <select class="form-select" id="area" name="area_no" required>
-                                 <option value="">Select Area</option>
+                                <option value="">Select Area</option>
                                 @foreach($areas as $area)
                                 <option value="{{ $area->areaID }}">{{ $area->area_name }}</option>
                                 @endforeach
@@ -257,7 +257,7 @@
 
                     <div class="tab-pane fade" id="account" role="tabpanel" aria-labelledby="account-tab">
                         <div class="mb-3">
-                            <label for="email" class="form-label">Username *</label>
+                            <label for="email" class="form-label">Email *</label>
                             <input type="username" class="form-control" name="email" id="username" required>
                         </div>
                         <div class="mb-3 password-toggle">
@@ -488,7 +488,7 @@
 
                             if (field === 'username') {
                                 showTab(2);
-                                alert('Username already taken. Please choose a different username.');
+                                alert('Email already taken. Please choose a different email.');
                                 return;
                             }
                         }
@@ -530,7 +530,7 @@
         updateTabStates();
 
         // Date of Birth and Precinct No Logic
-        const dateOfBirthInput = document.getElementById('dateOfBirth');
+        const dateOfBirthInput = document.getElementById('date_of_birth');
         const precintNoInput = document.getElementById('precintNo');
 
         function calculateAge(birthDate) {
@@ -578,19 +578,23 @@
         });
 
         // Password Toggle
-        document.querySelectorAll('.password-toggle-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-target');
-                const field = document.getElementById(targetId);
+        document.addEventListener('click', function(e) {
 
-                if (field.type === 'password') {
-                    field.type = 'text';
-                    this.textContent = 'Hide';
-                } else {
-                    field.type = 'password';
-                    this.textContent = 'Show';
-                }
-            });
+            if (!e.target.classList.contains('password-toggle-btn')) return;
+
+            const targetId = e.target.getAttribute('data-target');
+            const field = document.getElementById(targetId);
+
+            if (!field) return;
+
+            if (field.type === 'password') {
+                field.type = 'text';
+                e.target.textContent = 'Hide';
+            } else {
+                field.type = 'password';
+                e.target.textContent = 'Show';
+            }
+
         });
     </script>
 

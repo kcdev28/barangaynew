@@ -10,9 +10,10 @@ use App\Http\Controllers\JobSeekerController;
 
 Route::get('/', function () {
     return view('landingPage');
-})->name('landingPage');;
+})->name('landingPage');
 
-
+//about us page
+Route::get('/aboutUsPage', function () { return view('aboutUsPage'); })->name('aboutUsPage');
 
 //login routes
 Route::post('/login', [LoginController::class, 'login'])->name('login');

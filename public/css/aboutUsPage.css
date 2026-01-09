@@ -194,6 +194,27 @@ body {
     .login-btn {
         width: 100%;
     }
+
+    .about-section,
+    .mission-box,
+    .vision-box {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .officials-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .officials-row-two {
+        gap: 40px;
+        padding: 0 20px;
+    }
 }
 
 @media only screen and (min-width: 300px) and (max-width: 600px) {
@@ -221,6 +242,31 @@ body {
         padding: 15px 10px 0 10px;
         display: none;
         margin: 0;
+    }
+
+    .about-content h2,
+    .mission-content h2,
+    .vision-content h2 {
+        font-size: 28px;
+    }
+
+    .officials-title {
+        font-size: 28px;
+    }
+
+    .officials-row,
+    .officials-row-two {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .official-avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    .official-name {
+        font-size: 16px;
     }
 }
 
@@ -329,161 +375,228 @@ body {
     cursor: pointer;
 }
 
-/* Dropdown Styles */
-.user-dropdown {
+
+/* About Us Section */
+.about-section {
+    background: #F4F4F4;
+    padding: 60px 30px;
+}
+
+.about-section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.about-image {
+    width: 100%;
+    height: 350px;
+    background: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-content h2 {
+    font-size: 36px;
+    color: #1a5f3a;
+    margin-bottom: 15px;
     position: relative;
     display: inline-block;
 }
 
-.user-dropdown-btn {
-    background: none;
-    border: none;
-    color: #1b7f3b;
-    font-weight: 600;
-    cursor: pointer;
-    
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.user-dropdown-btn:hover {
-    color: #145a2b;
-}
-
-.dropdown-arrow {
-    transition: transform 0.3s ease;
-}
-
-.user-dropdown-btn.active .dropdown-arrow {
-    transform: rotate(180deg);
-}
-
-.user-dropdown-menu {
+.about-content h2::after {
+    content: '';
     position: absolute;
-    top: 100%;
-    right: 0;
-    background: white;
-    min-width: 220px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: 8px;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    margin-top: 8px;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: #1b7f3b;
 }
 
-.user-dropdown-menu.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.dropdown-header {
-    padding: 12px 16px;
-    background: #f8f9fa;
-    border-bottom: 1px solid #e9ecef;
-}
-
-.dropdown-user-name {
-    font-weight: 600;
-    color: #1b7f3b;
-    font-size: 14px;
-    margin: 0;
-}
-
-.dropdown-item {
-    display: block;
-    padding: 12px 16px;
+.about-content p {
     color: #333;
-    text-decoration: none;
-    transition: background 0.2s ease;
-    font-size: 14px;
+    line-height: 1.8;
+    font-size: 15px;
+    margin-top: 25px;
 }
 
-.dropdown-item:hover {
-    background: #f8f9fa;
-    color: #1b7f3b;
+/* Elected Officials Section */
+.elected-officials-section {
+    background: #2d8f4f;
+    padding: 60px 30px;
 }
 
-.dropdown-divider {
-    height: 1px;
-    background: #e9ecef;
-    margin: 0;
+.elected-officials-container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.dropdown-item.logout {
-    color: #dc3545;
-}
-
-.dropdown-item.logout:hover {
-    background: #fff5f5;
-    color: #c82333;
-}
-
-/* CAROUSEL */
-.carousel-item {
-    height: 400px;
-}
-
-p {
-    color: white;
-}
-
-.carousel-item img {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-}
-
-.carousel-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.officials-title {
     text-align: center;
-}
-
-.carousel-text h1 {
+    font-size: 36px;
     color: #fff;
-    font-size: 48px;
-    font-weight: 700;
-}
-
-/*  SERVICES  */
-.services-section {
-    padding: 60px 20px;
-    background: #f8f9fa;
-}
-
-.section-title {
-
-    text-align: center;
-    font-size: 32px;
     margin-bottom: 50px;
 }
 
-.service-card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 30px 20px;
-    height: 250px;
+.official-card {
     text-align: center;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    transition: 0.3s;
 }
 
-.service-card:hover {
-    background: #1b7f3b;
-    color: #fff;
-    transform: translateY(-8px);
+.official-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background: #c4c4c4;
+    margin: 0 auto 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.official-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.official-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.official-position {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.official-position.punong {
+    color: #ffd700;
+}
+
+.official-position.secretary {
+    color: #ffa500;
+}
+
+.official-position.treasurer {
+    color: #ffa500;
+}
+
+.official-position.kagawad {
+    color: #ffd700;
+}
+
+.official-position.sk-chair {
+    color: #ffd700;
+}
+
+.punong-barangay {
+    margin-bottom: 40px;
+}
+
+.officials-row-two {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 80px;
+    max-width: 700px;
+    margin: 0 auto 40px;
+    padding: 0 50px;
+}
+
+.officials-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.officials-row:last-child {
+    margin-bottom: 0;
+}
+
+
+/* Mission Vision Section */
+.mission-vision-section {
+    padding: 60px 0;
+}
+
+.mission-vision-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+}
+
+.mission-box,
+.vision-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.vision-box {
+    margin-bottom: 0;
+}
+
+.mission-content h2,
+.vision-content h2 {
+    font-size: 36px;
+    color: #1a5f3a;
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+.mission-content h2::after,
+.vision-content h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 4px;
+    background: #1b7f3b;
+}
+
+.mission-content p,
+.vision-content p {
+    color: #333;
+    line-height: 1.8;
+    font-size: 15px;
+    margin-top: 25px;
+}
+
+.mission-image,
+.vision-image {
+    width: 100%;
+    height: 350px;
+    background: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.mission-image img,
+.vision-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
 
 /*FOOTER */
 footer {
@@ -540,10 +653,5 @@ footer {
 
     .carousel-text h1 {
         font-size: 28px;
-    }
-
-    .user-dropdown-menu {
-        right: auto;
-        left: 0;
     }
 }
