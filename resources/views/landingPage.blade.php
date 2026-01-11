@@ -12,59 +12,7 @@
 </head>
 
 <body>
-    <!-- 2nd Navbar Structure -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-top">
-                <div class="navbar-brand">
-                    <img src="images/sanagustinlogo.png" alt="" class="logo-sanagustin">
-                    <img src="images/lungsodquezonlogo.png" alt="" class="logo-lungsodquezon">
-                    <div class="brand-text">
-                        <h1>Barangay San Agustin</h1>
-                        <p id="dateTime"></p>
-                    </div>
-                </div>
-                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
-            </div>
-
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="#home">HOME</a></li>
-                <li><a href="{{ route('aboutUsPage') }}">ABOUT US</a></li>
-                <li><a href="#services">SERVICES</a></li>
-                <li><a href="#announcements">ANNOUNCMENTS</a></li>
-                <li><a href="#contact">CONTACT US</a></li>
-                @if(Session::has('user_id') && Session::get('user_type') === 'resident')
-                    <!-- User Dropdown -->
-                    <li class="user-dropdown">
-                        <button class="user-dropdown-btn" id="userDropdownBtn">
-                            MY ACCOUNT
-                           
-                        </button>
-                        <div class="user-dropdown-menu" id="userDropdownMenu">
-                            <div class="dropdown-header">
-                                <p class="dropdown-user-name">{{ Session::get('user_name') }}</p>
-                            </div>
-                            <a href="#" class="dropdown-item">View Profile</a>
-                            <a href="#" class="dropdown-item">View Request Status</a>
-                            <div class="dropdown-divider"></div>
-                            <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
-                                @csrf
-                                <button type="submit" class="dropdown-item logout" style="width: 100%; text-align: left; background: none; border: none; cursor: pointer;">
-                                    Logout
-                                </button>
-                            </form>
-                        </div>
-                    </li>
-                @else
-                    <!-- Register and Login buttons -->
-                    <li><a href="{{ route('register') }}" class="register-btn" style="color: #1b7f3b;">REGISTER</a></li>
-                    <li><a href="#login" class="login-btn" id="loginBtn" style="color: #1b7f3b;">LOGIN</a></li>
-                @endif
-            </ul>
-        </div>
-    </nav>
-
-    <!-- 2nd Navbar Structure -->
+    @include('navbar')
 
     <!-- Login Modal -->
     <div id="loginModal" class="login-modal">
@@ -89,10 +37,10 @@
                         <input type="checkbox" id="showPassword">
                         <label for="showPassword">Show Password</label>
                     </div>
-                     @if($errors->any())
-                        <div class="alert alert-danger">
-                            {{ $errors->first() }}
-                        </div>
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                        {{ $errors->first() }}
+                    </div>
                     @endif
                     <button type="submit" class="btn-login-submit">Login</button>
                 </form>
@@ -132,7 +80,7 @@
         </div>
     </div>
 
-    <!-- Services Section -->
+    <!-- Services Section 
     <section id="services" class="services-section">
         <div class="container">
             <h2 class="section-title">Our Services</h2>
@@ -188,6 +136,201 @@
             </div>
         </div>
     </section>
+    -->
+
+    <section class="announcements-section">
+        <div class="section-header">
+            <h2>ANNOUNCEMENTS</h2>
+        </div>
+
+        <div id="announcementsCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#announcementsCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#announcementsCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#announcementsCarousel" data-bs-slide-to="2"></button>
+            </div>
+
+            <div class="carousel-inner">
+                <!-- Announcement 1 -->
+                <div class="carousel-item active">
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            KASALANG BAYAN
+                        </div>
+                        <div class="announcement-body">
+                            <div class="announcement-image">
+                                <img src="{{ asset('images/announcement1.png') }}" alt="Kasalang Bayan Poster">
+                            </div>
+                            <div class="announcement-details">
+                                <div class="detail-item">
+                                    <div class="detail-label">WHAT:</div>
+                                    <div class="detail-content">
+                                        Mass wedding ceremony for couples. Requirements include original/physical QC ID, photocopy of QC ID with 3 signatures, and Handog Claim Stub.
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">WHEN:</div>
+                                    <div class="detail-content">
+                                        To be announced. Registration is now open at the Barangay Hall.
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">WHERE:</div>
+                                    <div class="detail-content">
+                                        Barangay San Agustin Hall, Quezon City
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">WHO:</div>
+                                    <div class="detail-content">
+                                        All qualified residents of Barangay San Agustin. Sponsored by Punong Barangay Fable Y. Ortega & Council.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Announcement 2 -->
+                <div class="carousel-item">
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            COMMUNITY HEALTH PROGRAM
+                        </div>
+                        <div class="announcement-body">
+                            <div class="announcement-image">
+                                <img src="{{ asset('images/announcement1.png') }}" alt="Health Program Poster">
+                            </div>
+                            <div class="announcement-details">
+                                <div class="detail-item">
+                                    <div class="detail-label">WHAT:</div>
+                                    <div class="detail-content">
+                                        Free medical check-up, dental services, and vaccination program for all residents. Blood pressure monitoring and health consultation available.
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">WHEN:</div>
+                                    <div class="detail-content">
+                                        Every Saturday, 8:00 AM - 12:00 PM throughout the month
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">WHERE:</div>
+                                    <div class="detail-content">
+                                        Barangay San Agustin Health Center
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">WHO:</div>
+                                    <div class="detail-content">
+                                        Open to all residents of Barangay San Agustin. Please bring valid ID and Barangay ID for registration.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#announcementsCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#announcementsCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container-fluid">
+            <h2 class="section-title">SERVICES</h2>
+            <div class="services-grid">
+                <!-- Row 1 -->
+                <div class="service-item">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <img src="{{ asset('icons/greenID.png') }}" alt="Barangay ID">
+                        </div>
+                        <span class="service-name">Barangay ID Application</span>
+                    </div>
+                    <button class="btn-proceed">Proceed</button>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <img src="{{ asset('icons/greenJobSeeker.png') }}" alt="First Time Job Seeker">
+                        </div>
+                        <span class="service-name">First Time Job Seeker</span>
+                    </div>
+                    <button class="btn-proceed">Proceed</button>
+                </div>
+
+                <!-- Row 2 -->
+                <div class="service-item">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <img src="{{ asset('icons/greenClearance.png') }}" alt="Barangay Clearance">
+                        </div>
+                        <span class="service-name">Barangay Clearance</span>
+                    </div>
+                    <button class="btn-proceed">Proceed</button>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <img src="{{ asset('icons/greenPermit.png') }}" alt="Business Permit">
+                        </div>
+                        <span class="service-name">Business Permit</span>
+                    </div>
+                    <button class="btn-proceed">Proceed</button>
+                </div>
+
+                <!-- Row 3 -->
+                <div class="service-item">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <img src="{{ asset('icons/greenResidency.png') }}" alt="Certificate of Residency">
+                        </div>
+                        <span class="service-name">Certificate of Residency</span>
+                    </div>
+                    <button class="btn-proceed">Proceed</button>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <img src="{{ asset('icons/greenBlotter.png') }}" alt="Blotter Report">
+                        </div>
+                        <span class="service-name">Blotter Report</span>
+                    </div>
+                    <button class="btn-proceed">Proceed</button>
+                </div>
+
+                <!-- Row 4 -->
+                <div class="service-item">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <img src="{{ asset('icons/greenIndigency.png') }}" alt="Certificate of Indigency">
+                        </div>
+                        <span class="service-name">Certificate of Indigency</span>
+                    </div>
+                    <button class="btn-proceed">Proceed</button>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <img src="{{ asset('icons/greenHousehold.png') }}" alt="Household Information">
+                        </div>
+                        <span class="service-name">Household Information</span>
+                    </div>
+                    <button class="btn-proceed">Proceed</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -229,24 +372,8 @@
 
 
     <script>
-       document.addEventListener('DOMContentLoaded', function() {
-            function updateDateTime() {
-                const now = new Date();
-                const options = {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    second: '2-digit'
-                };
-                document.getElementById('dateTime').textContent =
-                    now.toLocaleDateString('en-US', options);
-            }
-
-            updateDateTime();
-            setInterval(updateDateTime, 1000);
+        document.addEventListener('DOMContentLoaded', function() {
+           
 
             const showPasswordCheckbox = document.getElementById('showPassword');
             const passwordInput = document.getElementById('password');
@@ -298,4 +425,3 @@
 </body>
 
 </html>
-

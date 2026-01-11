@@ -2,170 +2,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
 }
 
 body {
     font-family: 'Times New Roman', Times, serif;
-}
-
-.datetime-bar {
-    background: #198754;
-    color: white;
-    padding: 8px 20px;
-    text-align: right;
-    font-size: 25px;
-    font-weight: 500;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.navbar {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 15px 20px;
-}
-
-.navbar-brand {
-    font-weight: 700;
-    font-size: 20px;
-    color: black !important;
-}
-
-.navbar-brand img{
-    height: 60px;
-    width: 70px;
-
-}
-
-.btn-menu {
-    background: #198754;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.btn-menu:hover {
-    background: #ffc107;
-    transform: scale(1.05);
-}
-
-.side-menu {
-    position: fixed;
-    left: -300px;
-    top: 0;
-    width: 300px;
-    height: 100vh;
-    background: #198754;
-    padding: 20px 10px;
-    z-index: 1000;
-    transition: left 0.3s ease;
-    overflow-y: auto;
-}
-
-.side-menu.active {
-    left: 0;
-}
-
-.close-menu {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 28px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: all 0.3s ease;
-}
-
-.close-menu:hover {
-    transform: rotate(90deg);
-}
-
-.menu-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-}
-
-.menu-list li a {
-    color: white;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-    padding: 12px 5px;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    display: block;
-}
-
-.menu-list li a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    padding-left: 15px;
-    color: #ffc107;
-}
-
-.menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    display: none;
-    transition: all 0.3s ease;
-}
-
-.menu-overlay.active {
-    display: block;
-}
-
-.user-dropdown {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.dropdown-toggle::after {
-    display: none;
-}
-
-
-
-.dropdown-menu {
-    background-color: #198754 !important;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 0;
-    display: none;
-}
-
-.dropdown-menu.show {
-    display: block !important;
-}
-
-.dropdown-item {
-    color: white !important;
-    font-size: 13px;
-    padding: 10px 20px;
-    transition: all 0.3s ease;
-}
-
-.dropdown-item:hover {
-    background-color: #146c43 !important;
-    padding-left: 25px;
-}
-
-.dropdown-divider {
-    border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
 .registration-container {
@@ -187,28 +27,39 @@ body {
     margin-bottom: 30px;
 }
 
-.nav-tabs {
+/* IMPORTANT: Very specific selectors to override Bootstrap and navbar styles */
+#registrationTabs {
     border-bottom: 2px solid #198754;
     margin-bottom: 30px;
 }
 
-.nav-link {
-    color: #6c757d;
-    border: none;
-    border-bottom: 3px solid transparent;
-    font-weight: 600;
+/* Use ID selector for maximum specificity */
+#registrationTabs .nav-link {
+    color: #6c757d !important;
+    border: none !important;
+    border-bottom: 3px solid transparent !important;
+    font-weight: 600 !important;
     transition: all 0.3s ease;
+    background: none !important;
+    padding: 0.5rem 1rem !important;
 }
 
-.nav-link:hover {
-    color: #198754;
-    border-bottom-color: #ffc107;
+#registrationTabs .nav-link:hover {
+    color: #198754 !important;
+    border-bottom-color: #ffc107 !important;
+    background: none !important;
 }
 
-.nav-link.active {
-    color: #198754;
-    border-bottom-color: #198754;
-    background: none;
+#registrationTabs .nav-link.active {
+    color: #198754 !important;
+    border-bottom-color: #198754 !important;
+    background: none !important;
+}
+
+#registrationTabs .nav-link.disabled {
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
 }
 
 .tab-content {
@@ -220,7 +71,6 @@ body {
         opacity: 0;
         transform: translateY(10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -303,14 +153,15 @@ body {
     font-size: 12px;
 }
 
+.password-toggle-btn:hover {
+    color: #146c43;
+}
+
 .profile-picture-container {
     width: 200px;
     height: 200px;
     aspect-ratio: 1 / 1;
 }
-
-
-
 
 .is-invalid {
     border-color: #dc3545 !important;
@@ -323,10 +174,4 @@ body {
 .is-invalid:focus {
     border-color: #dc3545;
     box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
-}
-
-.nav-link.disabled {
-    pointer-events: none;
-    opacity: 0.5;
-    cursor: not-allowed;
 }

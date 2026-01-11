@@ -12,32 +12,7 @@
 </head>
 
 <body>
-    <!-- 2nd Navbar Structure -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-top">
-                <div class="navbar-brand">
-                    <img src="images/sanagustinlogo.png" alt="" class="logo-sanagustin">
-                    <img src="images/lungsodquezonlogo.png" alt="" class="logo-lungsodquezon">
-                    <div class="brand-text">
-                        <h1>Barangay San Agustin</h1>
-                        <p id="dateTime"></p>
-                    </div>
-                </div>
-                <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
-            </div>
-
-            <ul class="navbar-menu" id="navbarMenu">
-                <li><a href="{{ route('landingPage') }}">HOME</a></li>
-                <li><a href="{{ route('aboutUsPage') }}">ABOUT US</a></li>
-                <li><a href="#services">SERVICES</a></li>
-                <li><a href="#announcements">ANNOUNCMENTS</a></li>
-                <li><a href="#contact">CONTACT US</a></li>
-                <li><a href="{{ route('register') }}" class="register-btn" style="color: #1b7f3b;">REGISTER</a></li>
-                <li><a href="#login" class="login-btn" id="loginBtn" style="color: #1b7f3b;">LOGIN</a></li>
-            </ul>
-        </div>
-    </nav>
+    @include('navbar')
 
 
 

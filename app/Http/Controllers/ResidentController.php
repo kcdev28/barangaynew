@@ -82,7 +82,7 @@ class ResidentController extends Controller
                 'area_no' => 'required',
                 'date_of_birth' => 'required',
                 'gender' => 'required',
-                'civil_no' => 'required',
+                'civil_no' => 'nullable',
                 'contact_no' => 'required',
                 'religion_no' => 'nullable',
                 'citizenship' => 'nullable',

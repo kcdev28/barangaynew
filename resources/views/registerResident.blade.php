@@ -12,13 +12,13 @@
 </head>
 
 <body>
-
-
+    @include('navbar')
+    <!--
     <div class="datetime-bar">
         <span id="currentDateTime"></span>
     </div>
 
-
+ 
     <nav class="navbar navbar-custom">
         <div class="container-fluid px-4">
             <div class="d-flex align-items-center gap-3">
@@ -54,7 +54,7 @@
         </ul>
     </div>
     <div id="menuOverlay" class="menu-overlay"></div>
-
+    -->
     <div class="registration-container">
         <div class="registration-card">
             <h1 class="registration-title">Register Account</h1>
@@ -66,12 +66,12 @@
                         Information</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="address-tab" data-bs-toggle="tab" data-bs-target="#address"
+                    <button class="nav-link " id="address-tab" data-bs-toggle="tab" data-bs-target="#address"
                         type="button" role="tab" aria-controls="address" aria-selected="false">Address
                         Information</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="account-tab" data-bs-toggle="tab" data-bs-target="#account"
+                    <button class="nav-link " id="account-tab" data-bs-toggle="tab" data-bs-target="#account"
                         type="button" role="tab" aria-controls="account" aria-selected="false">Account
                         Information</button>
                 </li>
@@ -289,59 +289,8 @@
     </div>
 
     <script>
-        // DateTime Update
-        function updateDateTime() {
-            const now = new Date();
-            const options = {
-                weekday: 'long',
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            document.getElementById('currentDateTime').textContent = now.toLocaleDateString('en-US', options);
-        }
-
-        updateDateTime();
-        setInterval(updateDateTime, 1000);
-
-        // Menu Functionality
-        const menuBtn = document.getElementById('menuBtn');
-        const closeMenuBtn = document.getElementById('closeMenuBtn');
-        const sideMenu = document.getElementById('sideMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-        const menuLinks = document.querySelectorAll('.menu-list li a');
-
-        menuBtn.addEventListener('click', () => {
-            sideMenu.classList.add('active');
-            menuOverlay.classList.add('active');
-        });
-
-        if (closeMenuBtn) {
-            closeMenuBtn.addEventListener('click', () => {
-                sideMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-            });
-        }
-
-        if (menuOverlay) {
-            menuOverlay.addEventListener('click', () => {
-                sideMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-            });
-        }
-
-        menuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                sideMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-            });
-        });
-
         // Tab Navigation
-        const tabs = document.querySelectorAll('.nav-link');
+        const tabs = document.querySelectorAll('#registrationTabs .nav-link');
         const tabContents = document.querySelectorAll('.tab-pane');
         const nextBtn = document.getElementById('nextBtn');
         const prevBtn = document.getElementById('prevBtn');
@@ -381,6 +330,7 @@
                 }
             });
         });
+
 
         function validateCurrentTab() {
             const currentTabPane = tabContents[currentTab];
