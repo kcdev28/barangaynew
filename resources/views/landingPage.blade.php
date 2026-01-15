@@ -69,7 +69,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('images/home2.JPG') }}" class="d-block w-100" alt="Services">
+                <img src="{{ asset('images/home2.png') }}" class="d-block w-100" alt="Services">
                 <div class="carousel-overlay">
                     <div class="carousel-text">
                         <h1>Your Trusted Partner</h1>
@@ -79,64 +79,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Services Section 
-    <section id="services" class="services-section">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/card.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Barangay ID Application</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/file.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Barangay Clearance</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/real-estate.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Certificate of Residency</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/gloves.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Certificate of Indigency</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/jobseeker.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">First Time Job Seeker</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/jobseeker.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Business Permit</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/approval.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Blotter Report</h5>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="service-card">
-                        <img src="{{ asset('images/family.png') }}" style="width: 120px;" alt="">
-                        <h5 class="service-title">Household Information</h5>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    -->
 
     <section class="announcements-section">
         <div class="section-header">
@@ -153,6 +95,45 @@
             <div class="carousel-inner">
                 <!-- Announcement 1 -->
                 <div class="carousel-item active">
+                    <div class="announcement-card">
+                        <div class="announcement-header">
+                            KASALANG BAYAN
+                        </div>
+                        <div class="announcement-body">
+                            <div class="announcement-image">
+                                <img src="{{ asset('images/announcement1.png') }}" alt="Kasalang Bayan Poster">
+                            </div>
+                            <div class="announcement-details">
+                                <div class="detail-item">
+                                    <div class="detail-label">WHAT:</div>
+                                    <div class="detail-content">
+                                        Mass wedding ceremony for couples. Requirements include original/physical QC ID, photocopy of QC ID with 3 signatures, and Handog Claim Stub.
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">WHEN:</div>
+                                    <div class="detail-content">
+                                        To be announced. Registration is now open at the Barangay Hall.
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">WHERE:</div>
+                                    <div class="detail-content">
+                                        Barangay San Agustin Hall, Quezon City
+                                    </div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">WHO:</div>
+                                    <div class="detail-content">
+                                        All qualified residents of Barangay San Agustin. Sponsored by Punong Barangay Fable Y. Ortega & Council.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
                     <div class="announcement-card">
                         <div class="announcement-header">
                             KASALANG BAYAN
@@ -332,44 +313,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-map">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!3d3180.4155609706354!2d121.0375284268437!3d14.729362641123487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b0542d0ccaf1%3A0x54be2536d53a48e8!2sSan%20Agustin%20Barangay%20Hall!5e1!3m2!1sen!2sph!4v1763160848325!5m2!1sen!2sph"
-                    allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <div class="contact-item">
-                    <img src="{{ asset('images/whitepin.png') }}" alt="">
-                    <span>Patnubay St. Cor. Katarungan Saint Francis / Blueville Subdivision, Barangay San Agustin, Novaliches, Quezon City.</span>
-                </div>
-                <div class="contact-item">
-                    <img src="{{ asset('images/whitephone.png') }}" alt="">
-                    <span>8936-1295 ADMIN(OFFICE) / 09190647974 (BPSO)</span>
-                </div>
-                <div class="contact-item">
-                    <img src="{{ asset('images/whiteemail.png') }}" alt="">
-                    <span>brgysanagustin13@gmail.com</span>
-                </div>
-                <div class="contact-item">
-                    <img src="{{ asset('images/time.png') }}" alt="">
-                    <span>Mon - Fri: 8:00 AM - 5:00 PM</span>
-                </div>
-                <div class="contact-item">
-                    <img src="{{ asset('images/whitefacebook.png') }}" alt="">
-                    <span>Pamahalaang Brgy. ng San Agustin</span>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Barangay San Agustin E-Services. All rights reserved.</p>
-        </div>
-    </footer>
-
-
+     @include('footer')
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

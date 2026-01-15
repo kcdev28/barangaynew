@@ -3,14 +3,14 @@
 <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 
 
-<nav class="navbar navbar-expand-lg sticky-top px-5">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-xxl sticky-top px-5">
+
         <div class="navbar-brand-wrapper">
             <button class="hamburger-menu" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <img src="icons/greenmenu.png" alt="Menu">
             </button>
 
-            <a class="navbar-brand" href="#" style="color: #1b7f3b;">
+            <a class="navbar-brand" href="{{ route('landingPage') }}" style="color: #1b7f3b;">
                 <div class="brand-logos">
                     <img src="images/sanagustinlogo.png" alt="Logo 1" class="sanagustinlogo">
                     <img src="images/lungsodquezonlogo.png" alt="Logo 2" class="lungsodquezonlogo">
@@ -46,12 +46,12 @@
                     <a class="nav-link" href="#contact">CONTACT</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " style="color:#1b7f3b; font-weight: 500; text-decoration: underline;" href="{{ route('register') }}">REGISTER</a>
+                    <a class="nav-link register-link"  href="{{ route('register') }}">REGISTER</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link  login-btn" style="color:#1b7f3b; font-weight: 500; text-decoration: underline;" href="#login" id="loginBtn">LOGIN</a>
+                    <a class="nav-link login-link"  href="#login" id="loginBtn">LOGIN</a>
                 </li>
             </ul>
         </div>
-    </div>
+
 </nav>

@@ -14,37 +14,6 @@
 <body>
     @include('navbar')
 
-
-
-    <!-- Login Modal -->
-    <div id="loginModal" class="login-modal">
-        <div class="login-modal-content">
-            <div class="login-modal-header">
-                <button class="close-login-modal" id="closeLoginModal">&times;</button>
-                <img src="{{ asset('images/sanagustinlogo.png') }}" alt="San Agustin Logo" class="login-logo">
-                <h2>Welcome Back</h2>
-            </div>
-            <div class="login-modal-body">
-                <form id="loginForm" action="{{ route('login') }}" method="POST">
-                    @csrf
-                    <div class="login-form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" required>
-                    </div>
-                    <div class="login-form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                    </div>
-                    <div class="show-password-wrapper">
-                        <input type="checkbox" id="showPassword">
-                        <label for="showPassword">Show Password</label>
-                    </div>
-                    <button type="submit" class="btn-login-submit">Login</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
     <!-- About Us -->
     <section class="about-section">
         <div class="about-section-container">
@@ -195,42 +164,7 @@
 
 
     <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-map">
-                <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!3d3180.4155609706354!2d121.0375284268437!3d14.729362641123487!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b0542d0ccaf1%3A0x54be2536d53a48e8!2sSan%20Agustin%20Barangay%20Hall!5e1!3m2!1sen!2sph!4v1763160848325!5m2!1sen!2sph"
-                    allowfullscreen="" loading="lazy"></iframe>
-            </div>
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <div class="contact-item">
-                    <img src="{{ asset('images/whitepin.png') }}" alt="">
-                    <span>Patnubay St. Cor. Katarungan Saint Francis / Blueville Subdivision, Barangay San Agustin, Novaliches, Quezon City.</span>
-                </div>
-                <div class="contact-item">
-                    <img src="{{ asset('images/whitephone.png') }}" alt="">
-                    <span>8936-1295 ADMIN(OFFICE) / 09190647974 (BPSO)</span>
-                </div>
-                <div class="contact-item">
-                    <img src="{{ asset('images/whiteemail.png') }}" alt="">
-                    <span>brgysanagustin13@gmail.com</span>
-                </div>
-                <div class="contact-item">
-                    <img src="{{ asset('images/time.png') }}" alt="">
-                    <span>Mon - Fri: 8:00 AM - 5:00 PM</span>
-                </div>
-                <div class="contact-item">
-                    <img src="{{ asset('images/whitefacebook.png') }}" alt="">
-                    <span>Pamahalaang Brgy. ng San Agustin</span>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Barangay San Agustin E-Services. All rights reserved.</p>
-        </div>
-    </footer>
-
+    @include('footer')
 
 
     <script>

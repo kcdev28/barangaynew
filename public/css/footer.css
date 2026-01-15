@@ -1,0 +1,83 @@
+  .footer {
+      background-color: #1b7f3b;
+      color: white;
+      padding: 40px 0 20px 0;
+      width: 100%;
+  }
+
+  .sanagustinlogo {
+      width: 70px;
+      height: 70px;
+  }
+
+  .lungsodquezonlogo {
+      width: 60px;
+      height: 48px;
+  }
+
+  .footer-logo-section {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+  }
+
+ 
+  .footer-title {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-top: 15px;
+  }
+
+  .footer h5 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 20px;
+  }
+
+  .footer a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      font-size: 14px;
+  }
+
+  .footer a:hover {
+      opacity: 0.8;
+  }
+
+  .contact-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      font-size: 14px;
+  }
+
+  .contact-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      flex-shrink: 0;
+  }
+
+  .footer-bottom {
+
+
+      padding-top: 20px;
+      text-align: center;
+      font-size: 13px;
+      width: 100%;
+  }
+
+  .facebook-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 8px;
+  }
+
+  .facebook-link {
+      display: flex;
+      align-items: center;
+  }
