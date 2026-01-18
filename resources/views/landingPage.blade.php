@@ -14,41 +14,6 @@
 <body>
     @include('navbar')
 
-    <!-- Login Modal -->
-    <div id="loginModal" class="login-modal">
-        <div class="login-modal-content">
-            <div class="login-modal-header">
-                <button class="close-login-modal" id="closeLoginModal">&times;</button>
-                <img src="{{ asset('images/sanagustinlogo.png') }}" alt="San Agustin Logo" class="login-logo">
-                <h2>Welcome Back</h2>
-            </div>
-            <div class="login-modal-body">
-                <form id="loginForm" action="{{ route('login') }}" method="POST">
-                    @csrf
-                    <div class="login-form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" required>
-                    </div>
-                    <div class="login-form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
-                    </div>
-                    <div class="show-password-wrapper">
-                        <input type="checkbox" id="showPassword">
-                        <label for="showPassword">Show Password</label>
-                    </div>
-                    @if($errors->any())
-                    <div class="alert alert-danger">
-                        {{ $errors->first() }}
-                    </div>
-                    @endif
-                    <button type="submit" class="btn-login-submit">Login</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Carousel -->
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -93,7 +58,6 @@
             </div>
 
             <div class="carousel-inner">
-                <!-- Announcement 1 -->
                 <div class="carousel-item active">
                     <div class="announcement-card">
                         <div class="announcement-header">
@@ -172,7 +136,6 @@
                     </div>
                 </div>
 
-                <!-- Announcement 2 -->
                 <div class="carousel-item">
                     <div class="announcement-card">
                         <div class="announcement-header">
@@ -221,12 +184,11 @@
             </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="container-fluid">
             <h2 class="section-title">SERVICES</h2>
             <div class="services-grid">
-                <!-- Row 1 -->
+              
                 <div class="service-item">
                     <div class="service-content">
                         <div class="service-icon">
@@ -234,7 +196,7 @@
                         </div>
                         <span class="service-name">Barangay ID Application</span>
                     </div>
-                    <button class="btn-proceed">Proceed</button>
+                   <a href="{{ route('barangayIDpage') }}" class="btn-proceed">Proceed</a>
                 </div>
 
                 <div class="service-item">
@@ -247,7 +209,7 @@
                     <button class="btn-proceed">Proceed</button>
                 </div>
 
-                <!-- Row 2 -->
+            
                 <div class="service-item">
                     <div class="service-content">
                         <div class="service-icon">
@@ -268,7 +230,7 @@
                     <button class="btn-proceed">Proceed</button>
                 </div>
 
-                <!-- Row 3 -->
+    
                 <div class="service-item">
                     <div class="service-content">
                         <div class="service-icon">
@@ -289,7 +251,6 @@
                     <button class="btn-proceed">Proceed</button>
                 </div>
 
-                <!-- Row 4 -->
                 <div class="service-item">
                     <div class="service-content">
                         <div class="service-icon">
@@ -339,7 +300,6 @@
                 });
             }
 
-            // User Dropdown functionality
             const userDropdownBtn = document.getElementById('userDropdownBtn');
             const userDropdownMenu = document.getElementById('userDropdownMenu');
 
@@ -363,6 +323,10 @@
         function toggleMenu() {
             const menu = document.getElementById('navbarMenu');
             menu.classList.toggle('active');
+        }
+
+        function navigateTo(thisPage) {
+            window.location.href = thisPage;
         }
     </script>
 

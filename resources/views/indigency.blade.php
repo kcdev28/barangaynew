@@ -195,7 +195,7 @@
 
             </div>
 
-            <!-- add indigency modal -->
+        
             <div class="modal fade" id="addIndigencyModal" tabindex="-1" data-bs-backdrop="static">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -257,7 +257,7 @@
                 </div>
             </div>
 
-            <!-- view indigency modal -->
+         
             <div class="modal fade" id="viewModal" tabindex="-1">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">

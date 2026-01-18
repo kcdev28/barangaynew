@@ -197,7 +197,7 @@
 
             </div>
 
-            <!-- add residency modal -->
+         
             <div class="modal fade" id="addResidencyModal" tabindex="-1" data-bs-backdrop="static">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -273,7 +273,7 @@
                 </div>
             </div>
 
-            <!-- view residency modal -->
+        
             <div class="modal fade" id="viewResidencyModal" tabindex="-1" data-bs-backdrop="static">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -409,14 +409,14 @@
                 const dateIssued = cells[2].textContent.trim();
                 const status = cells[3].textContent.trim();
 
-                // Check all filter conditions
+        
                 const matchesSearch = name.includes(searchValue) || purpose.includes(searchValue);
                 const matchesStatus = !statusValue || status === statusValue;
 
-                // Date filter - match if dates are equal
+    
                 let matchesDate = true;
                 if (dateValue && dateIssued) {
-                    // Convert date issued to YYYY-MM-DD format for comparison
+           
                     const issuedDate = new Date(dateIssued);
                     const filterDate = new Date(dateValue);
 
@@ -425,7 +425,7 @@
                     matchesDate = false;
                 }
 
-                // Show/hide row based on all conditions
+     
                 if (matchesSearch && matchesStatus && matchesDate) {
                     row.style.display = '';
                     visibleCount++;
@@ -434,10 +434,10 @@
                 }
             });
 
-            // Update record count
+
             document.getElementById('recordCount').textContent = visibleCount;
 
-            // Show/hide "no results" message
+    
             const noResults = document.getElementById('noResults');
             if (visibleCount === 0) {
                 noResults.style.display = 'block';
@@ -466,14 +466,12 @@
                         return;
                     }
 
-                    // Fill hidden residentID
                     document.getElementById("residentID").value = data.residentID;
 
-                    // Autofill fields
                     document.getElementById("fullname").value =
                         `${data.firstname} ${data.middlename ?? ''} ${data.lastname}`;
                     document.getElementById("date_of_birth").value = data.date_of_birth;
-                    document.getElementById("civil_no").value = data.civil_status_name; // NAME, not ID
+                    document.getElementById("civil_no").value = data.civil_status_name; 
                     document.getElementById("address").value =
                         `${data.house_no} ${data.street}, ${data.area}`;
                     document.getElementById("citizenship").value = data.citizenship;
@@ -557,7 +555,6 @@
                 });
         }
 
-        // Open view modal and populate data
         function openViewResidencyModal(residencyID) {
             fetch(`/residency/view/${residencyID}`)
                 .then(res => res.json())
@@ -579,12 +576,11 @@
                     document.getElementById("view_purpose").value = data.purpose;
                     document.getElementById("view_year_of_residency").value = data.year_of_residency;
 
-                    // Show modal
                     new bootstrap.Modal(document.getElementById('viewResidencyModal')).show();
                 });
         }
 
-        // Reset modal
+    
         function resetViewResidencyModal() {
             document.getElementById("view_residencyID").value = "";
             document.getElementById("view_fullname").value = "";
@@ -632,7 +628,7 @@
                 .then(data => {
                     if (data.success) {
                         alert(data.message);
-                        loadResidencyRequests(); // reload table
+                        loadResidencyRequests(); 
                     } else {
                         alert(data.message);
                     }

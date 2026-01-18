@@ -196,8 +196,7 @@ class ResidentController extends Controller
                     "message" => "Resident not found"
                 ], 404);
             }
-
-            // Update status to Verified
+            
             $resident->status = 'Verified';
             $resident->save();
 
@@ -227,7 +226,6 @@ class ResidentController extends Controller
                 ], 404);
             }
 
-            // Validation rules
             $validator = Validator::make($request->all(), [
                 'firstname' => 'required',
                 'middlename' => 'nullable',
@@ -270,10 +268,8 @@ class ResidentController extends Controller
                 ], 422);
             }
 
-            // Handle profile image upload
             $profileImagePath = $resident->profile_image;
             if ($request->hasFile('profile_image')) {
-                // Delete old image if exists
                 if ($resident->profile_image) {
                     Storage::disk('public')->delete($resident->profile_image);
                 }
@@ -283,10 +279,8 @@ class ResidentController extends Controller
                 $profileImagePath = $profileImage->storeAs('residents/profiles', $profileImageName, 'public');
             }
 
-            // Handle verification image upload
             $verifyImagePath = $resident->verify_image;
             if ($request->hasFile('verify_img')) {
-                // Delete old image if exists
                 if ($resident->verify_image) {
                     Storage::disk('public')->delete($resident->verify_image);
                 }
@@ -296,7 +290,6 @@ class ResidentController extends Controller
                 $verifyImagePath = $verifyImage->storeAs('residents/verifications', $verifyImageName, 'public');
             }
 
-            // Update resident data
             $resident->firstname = $request->firstname;
             $resident->middlename = $request->middlename;
             $resident->lastname = $request->lastname;
@@ -320,12 +313,11 @@ class ResidentController extends Controller
             $resident->email = $request->email;
             
 
-            // Only update password if provided
+    
             if ($request->filled('password')) {
                 $resident->password = Hash::make($request->password);
             }
 
-            // Automatically set updated_at to current timestamp
             $resident->updated_at = now();
 
             $resident->save();

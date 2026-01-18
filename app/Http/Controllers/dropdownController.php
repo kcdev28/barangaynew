@@ -18,6 +18,17 @@ class dropdownController extends Controller
         $specialStatuses = special::all();
 
         return view('registerResident', compact('areas', 'civilStatuses', 'religions', 'specialStatuses'));
+        return view('barangayIDpage', compact('areas', 'civilStatuses', 'religions', 'specialStatuses'));
+    }
+
+    public function barangayIDcreate()
+    {
+        $areas = area::all();
+        $civilStatuses = civil::all();
+        $religions = religion::all();
+        $specialStatuses = special::all();
+
+        return view('barangayIDpage', compact('areas', 'civilStatuses', 'religions', 'specialStatuses'));
     }
 
     public function adminCreate()

@@ -3,7 +3,7 @@
 <footer class="footer">
     <div class="container">
         <div class="row">
-            <!-- Logo and Title Section -->
+       
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="footer-logo-section">
                     <img src="{{ asset('images/sanagustinlogo.png') }}" alt="Barangay Logo" class="sanagustinlogo">
@@ -12,21 +12,20 @@
                 <div class="footer-title">BARANGAY SAN AGUSTIN</div>
             </div>
 
-            <!-- Quick Links Section -->
             <div class="col-lg-3 col-md-6 mb-4">
                 <h5>Quick Links</h5>
-                <a href="#">Home</a>
-                <a href="#">About</a>
+                <a href="{{ route('landingPage') }}">Home</a>
+                <a href="{{ route('aboutUsPage') }}">About</a>
                 <a href="#">Mission & Vision</a>
                 <a href="#">Announcements</a>
                 <a href="#">Services</a>
                 <a href="#">Contact</a>
             </div>
 
-            <!-- Services Section -->
+
             <div class="col-lg-3 col-md-6 mb-4">
                 <h5>Services</h5>
-                <a href="#">Barangay ID Application</a>
+                <a href="{{ route('barangayIDpage') }}">Barangay ID Application</a>
                 <a href="#">Barangay Clearance</a>
                 <a href="#">Certificate of Residency</a>
                 <a href="#">Certificate of Indigency</a>
@@ -36,7 +35,6 @@
                 <a href="#">Household Information</a>
             </div>
 
-            <!-- Contact Section -->
             <div class="col-lg-3 col-md-6 mb-4">
                 <h5>Contact</h5>
                 <div class="contact-item">
@@ -65,7 +63,7 @@
         </div>
     </div>
         <hr style="margin: 0 !important;">
-        <!-- Footer Bottom -->
+    
         <div class="footer-bottom">
             © 2026 Barangay San Agustin E-Services. All rights reserved.
         </div>

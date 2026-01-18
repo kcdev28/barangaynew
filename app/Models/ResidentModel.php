@@ -38,7 +38,7 @@ class ResidentModel extends Model
         'updated_at'
     ];
 
-    // Define relationships
+
     public function civilStatus()
     {
         return $this->belongsTo(civil::class,'civil_no', 'civilID');

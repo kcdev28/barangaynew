@@ -207,7 +207,7 @@
                     </div>
                 </div>
 
-                <!-- add modal -->
+            
                 <div class="modal fade" id="residentModal" tabindex="-1" aria-labelledby="residentModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
@@ -219,7 +219,6 @@
                                 <form id="residentForm" enctype="multipart/form-data">
                                     @csrf
 
-                                    <!-- Personal Information Section -->
                                     <div class="section-header">
                                         <h6>Personal Information</h6>
                                     </div>
@@ -341,7 +340,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Address Information Section -->
+                               
                                     <div class="section-header mt-4">
                                         <h6>Address Information</h6>
                                     </div>
@@ -366,7 +365,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Account Information Section -->
                                     <div class="section-header mt-4">
                                         <h6>Account Information</h6>
                                     </div>
@@ -413,7 +411,7 @@
                     </div>
                 </div>
 
-                <!-- view modal -->
+           
                 <div class="modal fade" id="viewResidentModal" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
@@ -425,7 +423,7 @@
 
                             <div class="modal-body">
 
-                                <!-- PROFILE IMAGE CENTER -->
+                              
                                 <div class="row mb-4 justify-content-center">
                                     <div class="col-md-6 text-center">
                                         <h6 class="fw-bold mb-2">Profile Image</h6>
@@ -436,7 +434,7 @@
 
                                 <hr>
 
-                                <!-- PERSONAL INFORMATION -->
+                        
                                 <h5 class="mb-3">Personal Information</h5>
 
                                 <div class="row mb-3">
@@ -501,7 +499,6 @@
 
                                 <hr>
 
-                                <!-- ADDRESS INFORMATION -->
                                 <h5 class="mb-3">Address Information</h5>
 
                                 <div class="row mb-3">
@@ -526,7 +523,7 @@
 
                                 <hr>
 
-                                <!-- VERIFICATION IMAGE CENTER AT BOTTOM -->
+                             
                                 <div class="row mb-4 justify-content-center">
                                     <div class="col-md-6 text-center">
                                         <label class="fw-bold mb-2">Verification Image</label>
@@ -539,7 +536,7 @@
 
                             <div class="modal-footer">
 
-                                <!-- VERIFY BUTTON -->
+                      
                                 <button class="btn btn-success" id="verifyBtn">
                                     Verify Account
                                 </button>
@@ -551,7 +548,7 @@
                     </div>
                 </div>
 
-                <!-- edit modal -->
+      
                 <div class="modal fade" id="editResidentModal" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-xl">
                         <div class="modal-content">
@@ -563,7 +560,7 @@
                                 <form id="updateresidentForm" enctype="multipart/form-data" novalidate>
                                     @csrf
 
-                                    <!-- Personal Information Section -->
+                                 
                                     <div class="section-header">
                                         <h6>Personal Information</h6>
                                     </div>
@@ -685,7 +682,6 @@
                                         </div>
                                     </div>
 
-                                    <!-- Address Information Section -->
                                     <div class="section-header mt-4">
                                         <h6>Address Information</h6>
                                     </div>
@@ -710,7 +706,7 @@
                                         </div>
                                     </div>
 
-                                    <!-- Account Information Section -->
+                            
                                     <div class="section-header mt-4">
                                         <h6>Account Information</h6>
                                     </div>

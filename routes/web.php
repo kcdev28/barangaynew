@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BarangayIDController;
 use App\Http\Controllers\dropdownController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -12,6 +13,13 @@ Route::get('/', function () {
     return view('landingPage');
 })->name('landingPage');
 
+
+//login page
+Route::get('/loginPage', function () {
+    return view('loginPage');
+})->name('loginPage');
+
+
 //about us page
 Route::get('/aboutUsPage', function () { return view('aboutUsPage'); })->name('aboutUsPage');
 
@@ -22,6 +30,13 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 //register 
 Route::get('/register', [dropdownController::class, 'create'])->name('register');
 Route::post('/register', [ResidentController::class, 'store'])->name('resident.store');
+
+//barangay ID page
+Route::get('/barangayIDpage', function () { return view('barangayIDpage'); })->name('barangayIDpage');
+Route::get('/barangayIDpage', [dropdownController::class, 'barangayIDcreate'])->name('barangayIDpage');
+
+Route::get('/barangayIDpage', [BarangayIDController::class, 'showForm'])->name('barangayIDpage');
+Route::post('/submit-barangay-id', [BarangayIDController::class, 'submitForm'])->name('submitBarangayID');
 
 
 //admin routes

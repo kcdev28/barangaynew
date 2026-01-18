@@ -14,7 +14,6 @@
 <body>
     @include('navbar')
 
-    <!-- About Us -->
     <section class="about-section">
         <div class="about-section-container">
             <div class="about-image">
@@ -28,25 +27,23 @@
     </section>
 
 
-    <!-- Elected Officials Section -->
     <section class="elected-officials-section">
         <div class="elected-officials-container">
             <h2 class="officials-title">Elected Officials</h2>
 
-            <!-- Punong Barangay -->
+
             <div class="official-card punong-barangay">
                 <div class="official-avatar">
-                    <img src="{{ asset('images/default-profile.png') }}" alt="Punong Barangay">
+                    <img src="{{ asset('images/punongbarangay.png') }}" alt="Punong Barangay">
                 </div>
                 <h3 class="official-name">FABIOY Y. ORTEGA</h3>
                 <p class="official-position punong">PUNONG BARANGAY</p>
             </div>
 
-            <!-- Secretary and Treasurer -->
             <div class="officials-row-two">
                 <div class="official-card">
                     <div class="official-avatar">
-                        <img src="{{ asset('images/default-profile.png') }}" alt="Secretary">
+                        <img src="{{ asset('images/secretary.png') }}" alt="Secretary">
                     </div>
                     <h3 class="official-name">PATRIA B. UNTALAN</h3>
                     <p class="official-position secretary">BRGY. SECRETARY</p>
@@ -54,18 +51,17 @@
 
                 <div class="official-card">
                     <div class="official-avatar">
-                        <img src="{{ asset('images/default-profile.png') }}" alt="Treasurer">
+                        <img src="{{ asset('images/treasurer.png') }}" alt="Treasurer">
                     </div>
                     <h3 class="official-name">DANIEL O. CLARIN</h3>
                     <p class="official-position treasurer">BRGY. TREASURER</p>
                 </div>
             </div>
 
-            <!-- Kagawad Row 1 -->
             <div class="officials-row">
                 <div class="official-card">
                     <div class="official-avatar">
-                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
+                        <img src="{{ asset('images/kagawad1.png') }}" alt="Kagawad">
                     </div>
                     <h3 class="official-name">GERALD M. LAGATOC</h3>
                     <p class="official-position kagawad">BRGY. KAGAWAD</p>
@@ -73,7 +69,7 @@
 
                 <div class="official-card">
                     <div class="official-avatar">
-                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
+                        <img src="{{ asset('images/kagawad2.png') }}" alt="Kagawad">
                     </div>
                     <h3 class="official-name">EDMUNDO R. OSEA JR.</h3>
                     <p class="official-position kagawad">BRGY. KAGAWAD</p>
@@ -81,7 +77,7 @@
 
                 <div class="official-card">
                     <div class="official-avatar">
-                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
+                        <img src="{{ asset('images/kagawad3.png') }}" alt="Kagawad">
                     </div>
                     <h3 class="official-name">ROBERT R. PERALTA</h3>
                     <p class="official-position kagawad">BRGY. KAGAWAD</p>
@@ -89,18 +85,17 @@
 
                 <div class="official-card">
                     <div class="official-avatar">
-                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
+                        <img src="{{ asset('images/kagawad4.png') }}" alt="Kagawad">
                     </div>
                     <h3 class="official-name">ABIGAIL JEZREEL O. MILLAR</h3>
                     <p class="official-position kagawad">BRGY. KAGAWAD</p>
                 </div>
             </div>
 
-            <!-- Kagawad Row 2 -->
             <div class="officials-row">
                 <div class="official-card">
                     <div class="official-avatar">
-                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
+                        <img src="{{ asset('images/kagawad5.png') }}" alt="Kagawad">
                     </div>
                     <h3 class="official-name">ALEJANDRO F. PALMA</h3>
                     <p class="official-position kagawad">BRGY. KAGAWAD</p>
@@ -108,7 +103,7 @@
 
                 <div class="official-card">
                     <div class="official-avatar">
-                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
+                        <img src="{{ asset('images/kagawad6.png') }}" alt="Kagawad">
                     </div>
                     <h3 class="official-name">LILIBETH P. MATA</h3>
                     <p class="official-position kagawad">BRGY. KAGAWAD</p>
@@ -116,7 +111,7 @@
 
                 <div class="official-card">
                     <div class="official-avatar">
-                        <img src="{{ asset('images/default-profile.png') }}" alt="Kagawad">
+                        <img src="{{ asset('images/kagawad7.png') }}" alt="Kagawad">
                     </div>
                     <h3 class="official-name">JASMIN D. GILBUENA</h3>
                     <p class="official-position kagawad">BRGY. KAGAWAD</p>
@@ -124,7 +119,7 @@
 
                 <div class="official-card">
                     <div class="official-avatar">
-                        <img src="{{ asset('images/default-profile.png') }}" alt="SK Chairperson">
+                        <img src="{{ asset('images/skchairperson.png') }}" alt="SK Chairperson">
                     </div>
                     <h3 class="official-name">RACHEAL ANN LAUCHENCO</h3>
                     <p class="official-position sk-chair">SK CHAIRPERSON</p>
@@ -133,10 +128,8 @@
         </div>
     </section>
 
-    <!-- Mission & Vision Section -->
     <section class="mission-vision-section">
         <div class="mission-vision-container">
-            <!-- Mission -->
             <div class="mission-box">
                 <div class="mission-content">
                     <h2>Our Mission</h2>
@@ -147,7 +140,6 @@
                 </div>
             </div>
 
-            <!-- Vision -->
             <div class="vision-box">
                 <div class="vision-image">
                     <img src="{{ asset('images/barangayvision.png') }}" alt="">
@@ -160,12 +152,7 @@
         </div>
     </section>
 
-
-
-
-    <!-- Footer -->
     @include('footer')
-
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {

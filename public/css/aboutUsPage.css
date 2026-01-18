@@ -10,9 +10,6 @@ body {
 
 }
 
-
-
-/* About Us Section */
 .about-section {
     background: #F4F4F4;
     padding: 130px 30px;
@@ -43,7 +40,6 @@ body {
 
 .about-content h2 {
     font-size: 45px;
-    color: #1a5f3a;
     margin-bottom: 15px;
     position: relative;
     display: inline-block;
@@ -66,7 +62,7 @@ body {
     margin-top: 25px;
 }
 
-/* Elected Officials Section */
+
 .elected-officials-section {
     background: #2d8f4f;
     padding: 60px 30px;
@@ -89,9 +85,9 @@ body {
 }
 
 .official-avatar {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
     background: #c4c4c4;
     margin: 0 auto 15px;
     overflow: hidden;
@@ -164,7 +160,6 @@ body {
 }
 
 
-/* Mission Vision Section */
 .mission-vision-section {
     padding: 130px 70px;
 }
@@ -191,7 +186,6 @@ body {
 .mission-content h2,
 .vision-content h2 {
     font-size: 45px;
-    color: #1a5f3a;
     margin-bottom: 15px;
     position: relative;
     display: inline-block;
