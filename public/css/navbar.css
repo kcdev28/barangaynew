@@ -1,7 +1,56 @@
+.top-nav {
+    background-color: #1b7f3b;
+    color: white;
+    padding: 10px 10px;
+    font-size: 14px;
+    display: flex;
+
+}
+
+.contact-item-navbar {
+    display: flex;
+    align-items: flex-start;
+    margin: 0 10px;
+}
+
+.contact-icon-nav{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    flex-shrink: 0;
+}
+
+.contact-text {
+    font-size: 14px;
+}
+
+.contact-text-fb {
+    font-size: 14px;
+  
+}
+
+.top-facebook-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 0px;
+}
+
+.top-nav a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.top-nav a:hover {
+    opacity: 0.8;
+}
+
 nav.navbar {
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     font-family: Arial, Helvetica, sans-serif;
+    z-index: 1020;
 }
 
 nav.navbar .navbar-brand {
@@ -73,15 +122,35 @@ nav.navbar .navbar-nav .nav-item>.login-link {
     font-size: 18px !important;
 }
 
+nav.navbar .navbar-nav .nav-item>.register-link:hover {
+    background-color: none !important;
+    color: white !important;
+    border-radius: 5px;
+}
+
+nav.navbar .navbar-nav .nav-item>.login-link:hover {
+    background-color: #1b7f3b !important;
+    color: white !important;
+    border-radius: 5px;
+}
+
 nav.navbar .navbar-nav .nav-item>.nav-link:hover {
-    color: #1b7f3b !important;
+    background-color: #1b7f3b;
+    color: white;
+    border-radius: 5px;
+}
+
+nav.navbar .navbar-nav .nav-item>.nav-link.active::after {
+    background-color: #1b7f3b !important;
+    color: white !important;
+    border-radius: 5px;
 }
 
 nav.navbar .navbar-nav .nav-item>.nav-link.active {
     color: #1b7f3b !important;
 }
 
-/* User Dropdown Styles */
+
 .user-dropdown-toggle {
     display: flex;
     align-items: center;
@@ -137,7 +206,12 @@ nav.navbar .navbar-collapse {
     justify-content: flex-end;
 }
 
+
 @media only screen and (min-width: 500px) and (max-width: 1300px) {
+    .top-nav {
+        padding: 10px 1rem;
+    }
+
     nav.navbar {
         padding: 0 !important;
     }
@@ -196,7 +270,38 @@ nav.navbar .navbar-collapse {
     }
 }
 
+
 @media only screen and (max-width: 700px) {
+
+    .top-nav {
+        padding: 8px 0.5rem;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .contact-item-navbar {
+        margin: 0 5px;
+    }
+
+    .contact-text {
+        display: none;
+    }
+
+    .contact-text-fb {
+        display: none;
+    }
+
+    .contact-icon,
+    .top-facebook-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 0;
+    }
+
+    .facebook-link .ms-2 {
+        margin-left: 0 !important;
+    }
+
     nav.navbar {
         padding: 0 !important;
     }

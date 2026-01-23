@@ -166,7 +166,11 @@ class ResidentController extends Controller
             return response()->json([
                 'success' => true,
                 'message' => 'Resident added successfully!',
-                'data' => $resident
+                'data' => $resident,
+                'alert' => [
+                'icon' => 'success',
+                'title' => 'Registration Successful!'
+            ]
             ], 201);
         } catch (\Exception $e) {
 

@@ -24,11 +24,10 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
 
-
+        // Check admin credentials
         $admin = DB::table('vw_admins')
             ->where('email', $email)
             ->first();
-
 
         if ($admin) {
             if (Hash::check($password, $admin->password)) {
@@ -37,11 +36,12 @@ class LoginController extends Controller
                 Session::put('user_type', 'admin');
                 Session::put('email', $admin->email);
 
-                return redirect()->route('admin.dashboard');
+                //return redirect()->route('admin.dashboard')
+                   // ->with('success', 'Welcome back, ' . $admin->fullname . '!');
             }
         }
 
-
+        // Check resident credentials
         $resident = DB::table('tbl_residents')
             ->where('email', $email)
             ->first();
@@ -54,19 +54,21 @@ class LoginController extends Controller
                 Session::put('email', $resident->email);
 
                 return redirect()->route('landingPage')
-                    ->with('success', 'Welcome back, ' . $resident->firstname . ' ' . $resident->lastname);
+                    ->with('success', 'Welcome back, ' . $resident->firstname . ' ' . $resident->lastname . '!');
             }
         }
 
         // If authentication fails
         return back()
             ->withInput($request->only('email'))
-            ->withErrors(['email' => 'Invalid email or password']);
+            ->withErrors(['email' => 'Invalid email or password'])
+            ->with('error', 'Invalid Email or Password');
     }
 
     public function logout()
     {
         Session::flush();
-        return redirect()->route('loginPage');
+        return redirect()->route('loginPage')
+            ->with('logoutsuccess', 'You have been logged out successfully!');
     }
 }

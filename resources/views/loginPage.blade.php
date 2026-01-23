@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/loginPage.css') }}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -41,13 +41,6 @@
                             </button>
                         </div>
                     </div>
-                    @if ($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach ($errors->all() as $error)
-                        {{ $error }}
-                        @endforeach
-                    </div>
-                    @endif
                     <button type="submit" class="btn-login">Login</button>
                 </form>
 
@@ -65,22 +58,51 @@
         </div>
     </div>
     @include('footer')
-</body>
-<script>
-    function togglePassword() {
-        const passwordInput = document.getElementById('passwordInput');
-        const eyeIcon = document.getElementById('eyeIcon');
 
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-            eyeIcon.src = 'images/eyeslash.png';
-        } else {
-            passwordInput.type = 'password';
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('passwordInput');
+            const eyeIcon = document.getElementById('eyeIcon');
 
-            eyeIcon.src = 'images/eye.png';
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                eyeIcon.src = 'images/eyeslash.png';
+            } else {
+                passwordInput.type = 'password';
+                eyeIcon.src = 'images/eye.png';
+            }
         }
-    }
-</script>
+    </script>
+    
+=
+    @if(session::has('logoutsuccess'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Logout Successful!',
+            text: "{{ session::get('logoutsuccess') }}",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true
+        });
+    </script>
+    @endif
+ 
+    
+    @if(session::has('error'))
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Error!',
+            text: "{{ session::get('error') }}",
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true
+        });
+    </script>
+    @endif
+</body>
 
 </html>

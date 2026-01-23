@@ -54,7 +54,7 @@
                     <span>Mon - Fri: 8:00 AM - 5:00 PM</span>
                 </div>
                 <div class="contact-item">
-                    <a href="#" class="facebook-link">
+                    <a href="https://www.facebook.com/p/Pamahalaang-Brgy-ng-San-Agustin-61553997204246/" target="_blank" class="facebook-link">
                         <img src="{{ asset('images/whitefacebook.png') }}" alt="Facebook" class="facebook-icon">
                         <span class="ms-2">Pamahalaang Brgy. ng San Agustin</span>
                     </a>

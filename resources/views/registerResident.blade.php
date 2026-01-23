@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/registerResident.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 
 <body>
@@ -117,7 +118,7 @@
                     </div>
                 </div>
 
-            
+
                 <div class="form-page" id="page2">
                     <div class="row mb-3">
                         <div class="col-md-4">
@@ -172,18 +173,18 @@
                     </div>
                 </div>
 
-            
+
                 <div class="form-page" id="page3">
                     <div class="row mb-3">
                         <div class="col-md-4">
-                            <label for="username" class="form-label">Email: <span class="text-danger">*</span></label>
-                            <input type="email" class="form-control" name="email" id="username" required>
+                            <label for="email" class="form-label">Email: <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" name="email" id="email" required>
                         </div>
                         <div class="col-md-4">
                             <label for="password" class="form-label">Password: <span class="text-danger">*</span></label>
                             <div class="password-toggle">
                                 <input type="password" class="form-control" id="password" name="password" required>
-                        
+
                                 <button type="button" class="toggle-password" onclick="togglePassword()">
                                     <img id="eyeIcon" src="{{ asset('images/eye.png') }}" alt="Toggle Password">
                                 </button>
@@ -193,7 +194,7 @@
                             <label for="confirmPassword" class="form-label">Confirm Password: <span class="text-danger">*</span></label>
                             <div class="password-toggle">
                                 <input type="password" class="form-control" id="confirmPassword" name="confirm_password" required>
-                            
+
                                 <button type="button" class="toggle-password" onclick="togglePassword()">
                                     <img id="eyeIcon" src="{{ asset('images/eye.png') }}" alt="Toggle Password">
                                 </button>
@@ -226,6 +227,8 @@
         </div>
     </div>
     @include('footer')
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const pages = document.querySelectorAll('.form-page');
         let currentPage = 0;
@@ -260,7 +263,7 @@
             return isValid;
         }
 
-  
+
         document.getElementById('nextBtn1').addEventListener('click', (e) => {
             e.preventDefault();
             if (validatePage(0)) {
@@ -268,7 +271,7 @@
             }
         });
 
-  
+
         document.getElementById('prevBtn2').addEventListener('click', (e) => {
             e.preventDefault();
             showPage(0);
@@ -281,17 +284,17 @@
             }
         });
 
-   
+
         document.getElementById('prevBtn3').addEventListener('click', (e) => {
             e.preventDefault();
             showPage(1);
         });
 
-   
+
         document.getElementById('registrationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
 
-      
+
             let allValid = true;
             for (let i = 0; i < pages.length; i++) {
                 if (!validatePage(i)) {
@@ -354,9 +357,15 @@
                                 }
                             }
 
-                            if (field === 'username') {
+                            if (field === 'email') {
                                 showPage(2);
-                                alert('Email already taken. Please choose a different email.');
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Email Already Taken',
+                                    text: 'Please choose a different email.',
+                                    confirmButtonColor: '#d33'
+                                });
+
                                 return;
                             }
                         }
@@ -369,21 +378,36 @@
                             alert('Please correct the following errors:\n\n' + errorMessages.join('\n'));
                         }
                     } else {
-                        alert(result.message || 'Registration failed. Please try again.');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Registration Failed',
+                            text: result.message || 'Registration failed. Please try again.',
+                            confirmButtonColor: '#d33'
+                        });
                     }
                     return;
                 }
 
-                alert(result.message);
-                this.reset();
-                document.querySelectorAll('.is-invalid').forEach(el => {
-                    el.classList.remove('is-invalid');
-                });
-                showPage(0);
+                const alertConfig = result.alert || {
+                    icon: 'success',
+                    title: 'Registration Successful!',
+                    text: result.message || 'Resident added successfully!'
+                };
 
-                setTimeout(() => {
+                Swal.fire({
+                    icon: alertConfig.icon,
+                    title: alertConfig.title,
+                    text: alertConfig.text,
+                    showConfirmButton: false,
+                    timer: 3000
+                }).then(() => {
+                    this.reset();
+                    document.querySelectorAll('.is-invalid').forEach(el => {
+                        el.classList.remove('is-invalid');
+                    });
+                    showPage(0);
                     window.location.href = "{{ route('landingPage') }}";
-                }, 1500);
+                });
 
             } catch (error) {
                 console.error('Registration error:', error);
@@ -396,7 +420,7 @@
 
         showPage(0);
 
-      
+
         const dateOfBirthInput = document.getElementById('date_of_birth');
         const precintNoInput = document.getElementById('precintNo');
 
@@ -434,26 +458,24 @@
 
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text';
-              
+
                 eyeIcon.src = 'images/eyeslash.png';
             } else {
                 passwordInput.type = 'password';
-              
+
                 eyeIcon.src = 'images/eye.png';
             }
 
             if (confirmPasswordInput.type === 'confirmPassword') {
                 confirmPasswordInput.type = 'text';
-               
+
                 eyeIcon.src = 'images/eyeslash.png';
             } else {
                 confirmPasswordInput.type = 'confirmPassword';
-              
+
                 eyeIcon.src = 'images/eye.png';
             }
         }
-
-
     </script>
 
 </body>
