@@ -58,7 +58,7 @@
                     </ul>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link" href="#news&events">NEWS & EVENTS</a>
+                    <a class="nav-link" href="{{ route('newsandeventPage') }}">NEWS & EVENTS</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#contact">CONTACT</a>
@@ -107,7 +107,7 @@ function updateTime() {
     const options = { 
         month: 'short', 
         day: '2-digit',
-        weekday: 'short',
+        weekday: 'long',
         year: 'numeric',
         hour: '2-digit', 
         minute: '2-digit', 

@@ -23,6 +23,9 @@ Route::get('/loginPage', function () {
 //about us page
 Route::get('/aboutUsPage', function () { return view('aboutUsPage'); })->name('aboutUsPage');
 
+//news and event page
+Route::get('/newsandeventPage', function () { return view('newsandeventPage'); })->name('newsandeventPage');
+
 //login routes
 Route::post('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

@@ -71,7 +71,7 @@
                                 <option value="">Select Area</option>
                                 @foreach($areas as $area)
                                 <option value="{{ $area->areaID }}"
-                                    {{ (isset($resident) && $resident->area_no == $area->areaID) ? 'selected' : '' }}>
+                                    {{ (isset($resident) && $resident->area == $area->areaID) ? 'selected' : '' }}>
                                     {{ $area->area_name }}
                                 </option>
                                 @endforeach
@@ -132,7 +132,7 @@
                                 <option value="">Select Religion</option>
                                 @foreach($religions as $religion)
                                 <option value="{{ $religion->religionID }}"
-                                    {{ (isset($resident) && $resident->religion_no == $religion->religionID) ? 'selected' : '' }}>
+                                    {{ (isset($resident) && $resident->religion == $religion->religionID) ? 'selected' : '' }}>
                                     {{ $religion->religion }}
                                 </option>
                                 @endforeach
@@ -166,7 +166,6 @@
                     </div>
                 </div>
 
-                <!-- Page 2: Emergency Contact Information -->
                 <div class="form-page" id="page2">
                     <h4 class="mb-4" style="color: #198754;">In Case of Emergency Contact Information</h4>
 

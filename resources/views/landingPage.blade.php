@@ -127,59 +127,6 @@
                     </div>
                 </div>
 
-
-                <div class="news-card" data-delay="200">
-                    <div class="news-card-image">
-                        <img src="{{ asset('images/fiesta.jpg') }}" alt="Barangay Fiesta">
-                    </div>
-                    <div class="news-card-content">
-                        <h3 class="news-card-title">Barangay Fiesta</h3>
-                        <p class="news-card-description">Ante montes accumsan pulvinar metus. Maecenas erat cubilia justo conubia fames sagittis. Natoque ipsum nec ut. Class adipiscing congue id malesuada hendrerit cras taciti arcu?</p>
-                        <div class="news-card-footer">
-                            <span class="news-card-date">1/21/2026</span>
-                            <a href="#" class="news-card-link">Read More &#10095</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card" data-delay="200">
-                    <div class="news-card-image">
-                        <img src="{{ asset('images/fiesta.jpg') }}" alt="Barangay Fiesta">
-                    </div>
-                    <div class="news-card-content">
-                        <h3 class="news-card-title">Barangay Fiesta</h3>
-                        <p class="news-card-description">Ante montes accumsan pulvinar metus. Maecenas erat cubilia justo conubia fames sagittis. Natoque ipsum nec ut. Class adipiscing congue id malesuada hendrerit cras taciti arcu?</p>
-                        <div class="news-card-footer">
-                            <span class="news-card-date">1/21/2026</span>
-                            <a href="#" class="news-card-link">Read More &#10095</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card" data-delay="200">
-                    <div class="news-card-image">
-                        <img src="{{ asset('images/fiesta.jpg') }}" alt="Barangay Fiesta">
-                    </div>
-                    <div class="news-card-content">
-                        <h3 class="news-card-title">Barangay Fiesta</h3>
-                        <p class="news-card-description">Ante montes accumsan pulvinar metus. Maecenas erat cubilia justo conubia fames sagittis. Natoque ipsum nec ut. Class adipiscing congue id malesuada hendrerit cras taciti arcu?</p>
-                        <div class="news-card-footer">
-                            <span class="news-card-date">1/21/2026</span>
-                            <a href="#" class="news-card-link">Read More &#10095</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="news-card" data-delay="200">
-                    <div class="news-card-image">
-                        <img src="{{ asset('images/fiesta.jpg') }}" alt="Barangay Fiesta">
-                    </div>
-                    <div class="news-card-content">
-                        <h3 class="news-card-title">Barangay Fiesta</h3>
-                        <p class="news-card-description">Ante montes accumsan pulvinar metus. Maecenas erat cubilia justo conubia fames sagittis. Natoque ipsum nec ut. Class adipiscing congue id malesuada hendrerit cras taciti arcu?</p>
-                        <div class="news-card-footer">
-                            <span class="news-card-date">1/21/2026</span>
-                            <a href="#" class="news-card-link">Read More &#10095</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="news-card" data-delay="200">
                     <div class="news-card-image">
                         <img src="{{ asset('images/fiesta.jpg') }}" alt="Barangay Fiesta">
@@ -196,26 +143,15 @@
             </div>
 
             <div class="news-navigation">
-                <button class="nav-arrow-btn" id="prevBtn" onclick="navigateNews(-1)">&#10094</button>
                 <button class="view-all-btn">View All News & Events</button>
-                <button class="nav-arrow-btn" id="nextBtn" onclick="navigateNews(1)">&#10095</button>
             </div>
         </div>
     </section>
 
     <section id="services" class="services-section">
         <div class="container-fluid">
-            <h2 class="section-title">SERVICES</h2>
+            <h2 class="section-title">Services</h2>
             <div class="services-grid">
-                <div class="service-item">
-                    <div class="service-content">
-                        <div class="service-icon">
-                            <img src="{{ asset('icons/greenHousehold.png') }}" alt="Household Information">
-                        </div>
-                        <span class="service-name">Household Information</span>
-                    </div>
-                    <button class="btn-proceed">Proceed</button>
-                </div>
                 <div class="service-item">
                     <div class="service-content">
                         <div class="service-icon">
@@ -282,6 +218,63 @@
             </div>
         </div>
     </section>
+
+    <section class="gallery-section">
+        <div class="container-fluid">
+            <div class="section-header">
+                <h2 class="section-title">Gallery</h2>
+                <p>Capturing moments and memories from our community</p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-delay="0">
+                    <img src="{{ asset('images/gallery1.png') }}" alt="Gallery Photo 1">
+                </div>
+
+                <div class="gallery-item" data-delay="100">
+                    <img src="{{ asset('images/gallery2.png') }}" alt="Gallery Photo 2">
+                </div>
+
+                <div class="gallery-item" data-delay="200">
+                    <img src="{{ asset('images/gallery3.png') }}" alt="Gallery Photo 3">
+                </div>
+
+                <div class="gallery-item" data-delay="0">
+                    <img src="{{ asset('images/gallery4.png') }}" alt="Gallery Photo 4">
+                </div>
+
+                <div class="gallery-item" data-delay="100">
+                    <img src="{{ asset('images/gallery5.png') }}" alt="Gallery Photo 5">
+                </div>
+
+                <div class="gallery-item" data-delay="200">
+                    <img src="{{ asset('images/gallery6.png') }}" alt="Gallery Photo 6">
+                </div>
+
+                <div class="gallery-item" data-delay="0">
+                    <img src="{{ asset('images/gallery7.png') }}" alt="Gallery Photo 7">
+                </div>
+                <div class="gallery-item" data-delay="100">
+                    <img src="{{ asset('images/gallery8.png') }}" alt="Gallery Photo 8">
+
+                </div>
+
+                <div class="gallery-item" data-delay="200">
+                    <img src="{{ asset('images/gallery9.png') }}" alt="Gallery Photo 9">
+                </div>
+            </div>
+
+            <div class="gallery-navigation">
+                <button class="view-all-btn">View All Photos</button>
+            </div>
+        </div>
+
+        <div id="lightbox" class="lightbox">
+            <span class="lightbox-close">&times;</span>
+            <img class="lightbox-content" id="lightboxImage">
+        </div>
+    </section>
+
     @include('scrollToTop')
     @include('footer')
 
@@ -334,7 +327,7 @@
                 rootMargin: '0px 0px -50px 0px'
             };
 
-    
+
             const serviceObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -350,51 +343,28 @@
             });
 
 
-        });
+            const galleryObserverOptions = {
+                threshold: 0.2,
+                rootMargin: '0px 0px -50px 0px'
+            };
 
-        const newsGrid = document.getElementById('newsGrid');
-        const newsCards = document.querySelectorAll('.news-card');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const maxVisible = 6;
-        let currentPage = 0;
-        const totalPages = Math.ceil(newsCards.length / maxVisible);
+            const galleryObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = entry.target.dataset.delay || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('animate-in');
+                        }, delay);
+                    }
+                });
+            }, galleryObserverOptions);
 
-        function updateNewsDisplay() {
-            const start = currentPage * maxVisible;
-            const end = start + maxVisible;
-
-            newsCards.forEach((card, index) => {
-                if (index >= start && index < end) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                galleryObserver.observe(item);
             });
 
-           
-            if (newsCards.length > maxVisible) {
-                prevBtn.style.display = currentPage > 0 ? 'inline-block' : 'none';
-                nextBtn.style.display = currentPage < totalPages - 1 ? 'inline-block' : 'none';
-            }
-        }
 
-        prevBtn.addEventListener('click', function() {
-            if (currentPage > 0) {
-                currentPage--;
-                updateNewsDisplay();
-            }
         });
-
-        nextBtn.addEventListener('click', function() {
-            if (currentPage < totalPages - 1) {
-                currentPage++;
-                updateNewsDisplay();
-            }
-        });
-
-       
-        updateNewsDisplay();
 
         function toggleMenu() {
             const menu = document.getElementById('navbarMenu');
@@ -404,6 +374,34 @@
         function navigateTo(thisPage) {
             window.location.href = thisPage;
         }
+
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const lightboxClose = document.querySelector('.lightbox-close');
+
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', function() {
+                lightboxImage.src = this.src;
+                lightbox.style.display = 'flex';
+            });
+        });
+
+        lightboxClose.addEventListener('click', function() {
+            lightbox.style.display = 'none';
+        });
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                lightbox.style.display = 'none';
+            }
+        });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -421,7 +419,7 @@
     </script>
     @endif
 
- 
+
 </body>
 
 </html>

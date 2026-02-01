@@ -1,4 +1,21 @@
+@font-face {
+  font-family: 'myfont'; 
+  src: url('/bootstrap/font/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'myfontbold'; 
+  src: url('/bootstrap/font/Montserrat-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+    
 .top-nav {
+    font-family: 'myfont', sans-serif;
     background-color: #1b7f3b;
     color: white;
     padding: 10px 10px;
@@ -49,7 +66,7 @@
 nav.navbar {
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'myfont', sans-serif;
     z-index: 1020;
 }
 
@@ -57,7 +74,7 @@ nav.navbar .navbar-brand {
     display: flex;
     align-items: center;
     gap: 10px;
-    font-weight: 600;
+    font-family: 'myfontbold', sans-serif;
     color: #1b7f3b;
     font-size: 25px;
     text-decoration: none;
@@ -95,55 +112,54 @@ nav.navbar .navbar-brand:hover {
 
 nav.navbar .navbar-nav .nav-item>.nav-link {
     color: black;
-    font-weight: 500 !important;
+    font-weight: 600 !important;
     padding: 0.3rem 0.7rem;
     text-decoration: none !important;
     transition: color 0.3s;
-    font-size: 18px !important;
+    font-size: 16px !important;
     border: none !important;
     border-bottom: none !important;
 }
 
 nav.navbar .navbar-nav .nav-item>.register-link {
     color: #1b7f3b !important;
-    font-weight: 500 !important;
+    font-weight: 700 !important;
     text-decoration: underline !important;
     padding: 0.3rem 0.7rem;
     transition: color 0.3s;
-    font-size: 18px !important;
+    font-size: 16px !important;
 }
 
 nav.navbar .navbar-nav .nav-item>.login-link {
     color: #1b7f3b !important;
-    font-weight: 500 !important;
+    font-weight: 700 !important;
     text-decoration: underline !important;
     padding: 0.3rem 0.7rem;
     transition: color 0.3s;
-    font-size: 18px !important;
+    font-size: 16px !important;
 }
 
 nav.navbar .navbar-nav .nav-item>.register-link:hover {
     background-color: none !important;
     color: white !important;
-    border-radius: 5px;
+
 }
 
 nav.navbar .navbar-nav .nav-item>.login-link:hover {
     background-color: #1b7f3b !important;
     color: white !important;
-    border-radius: 5px;
 }
 
 nav.navbar .navbar-nav .nav-item>.nav-link:hover {
     background-color: #1b7f3b;
     color: white;
-    border-radius: 5px;
+
 }
 
 nav.navbar .navbar-nav .nav-item>.nav-link.active::after {
     background-color: #1b7f3b !important;
     color: white !important;
-    border-radius: 5px;
+
 }
 
 nav.navbar .navbar-nav .nav-item>.nav-link.active {
@@ -160,7 +176,7 @@ nav.navbar .navbar-nav .nav-item>.nav-link.active {
     padding: 0.3rem 0.7rem;
     text-decoration: none !important;
     transition: color 0.3s;
-    font-size: 18px !important;
+    font-size: 16px !important;
 }
 
 .user-dropdown-toggle:hover {
@@ -168,9 +184,8 @@ nav.navbar .navbar-nav .nav-item>.nav-link.active {
 }
 
 .user-icon {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    width: 20px;
+    height: 20px;
     object-fit: cover;
 }
 

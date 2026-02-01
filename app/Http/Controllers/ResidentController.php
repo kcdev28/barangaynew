@@ -10,6 +10,9 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Validation\Rules\Password;
+
 
 class ResidentController extends Controller
 {
@@ -76,22 +79,30 @@ class ResidentController extends Controller
                 'middlename' => 'nullable',
                 'lastname' => 'required',
                 'suffix' => 'nullable',
-                'profile_image' => 'nullable',
                 'house_no' => 'required',
                 'street' => 'required',
-                'area_no' => 'required',
+                'area' => 'required',
+                'barangay' => 'nullable',
+                'city' => 'nullable',
+                'province' => 'nullable',
+                'business_house_no' => 'nullable',
+                'business_street' => 'nullable',
+                'business_area_no' => 'nullable',
+                'business_barangay' => 'nullable',
+                'business_city' => 'nullable',
+                'business_province' => 'nullable',
                 'date_of_birth' => 'required',
                 'gender' => 'required',
                 'civil_no' => 'nullable',
                 'contact_no' => 'required',
-                'religion_no' => 'nullable',
+                'religion' => 'nullable',
                 'citizenship' => 'nullable',
                 'voter_status' => 'nullable',
                 'precinct_no' => 'nullable',
                 'occupation' => 'nullable',
                 'employment_status' => 'nullable',
                 'special_group_no' => 'nullable',
-                'verify_img' => 'nullable',
+                'g-recaptcha-response' => 'required',
                 'email' => [
                     'required',
                     Rule::unique('tbl_residents', 'email'),
@@ -102,10 +113,19 @@ class ResidentController extends Controller
                     }
                 ],
 
-                'password' => 'required',
-                'confirm_password' => 'required',
+                'password' => [
+                    'required',
+                    'confirmed', 
+                    Password::min(8)
+                        ->mixedCase()
+                        ->numbers()
+                        ->symbols()
+                ],
+
+                'password_confirmation' => 'required',
 
             ]);
+
 
             if ($validator->fails()) {
                 return response()->json([
@@ -116,48 +136,40 @@ class ResidentController extends Controller
             }
 
 
-            $profileImagePath = null;
-            if ($request->hasFile('profile_image')) {
-                $profileImage = $request->file('profile_image');
-                $profileImageName = time() . '_profile_' . $profileImage->getClientOriginalName();
-                $profileImagePath = $profileImage->storeAs('residents/profiles', $profileImageName, 'public');
-            }
-
-
-            $verifyImagePath = null;
-            if ($request->hasFile('verify_img')) {
-                $verifyImage = $request->file('verify_img');
-                $verifyImageName = time() . '_verify_' . $verifyImage->getClientOriginalName();
-                $verifyImagePath = $verifyImage->storeAs('residents/verifications', $verifyImageName, 'public');
-            }
-
 
             $residentData = [
                 'firstname' => $request->firstname,
                 'middlename' => $request->middlename,
                 'lastname' => $request->lastname,
                 'suffix' => $request->suffix,
-                'profile_image' => $profileImagePath,
                 'house_no' => $request->house_no,
                 'street' => $request->street,
-                'area_no' => $request->area_no,
+                'area' => $request->area,
+                'barangay' => $request->barangay,
+                'city' => $request->city,
+                'province' => $request->province,
+                'business_house_no' => $request->business_house_no,
+                'business_street' => $request->business_street,
+                'business_area_no' => $request->business_area_no,
+                'business_barangay' => $request->business_barangay,
+                'business_city' => $request->business_city,
+                'business_province' => $request->business_province,
                 'date_of_birth' => $request->date_of_birth,
                 'gender' => $request->gender,
                 'civil_no' => $request->civil_no,
                 'contact_no' => $request->contact_no,
-                'religion_no' => $request->religion_no,
+                'religion' => $request->religion,
                 'citizenship' => $request->citizenship,
                 'voter_status' => $request->voter_status,
                 'precinct_no' => $request->precinct_no,
                 'occupation' => $request->occupation,
                 'employment_status' => $request->employment_status,
                 'special_group_no' => $request->special_group_no,
-                'verify_image' => $verifyImagePath,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'status' => 'Pending',
                 'created_at' => Carbon::now()
-              
+
             ];
 
 
@@ -168,24 +180,37 @@ class ResidentController extends Controller
                 'message' => 'Resident added successfully!',
                 'data' => $resident,
                 'alert' => [
-                'icon' => 'success',
-                'title' => 'Registration Successful!'
-            ]
+                    'icon' => 'success',
+                    'title' => 'Registration Successful!'
+                ]
             ], 201);
         } catch (\Exception $e) {
-
-            if (isset($profileImagePath)) {
-                Storage::disk('public')->delete($profileImagePath);
-            }
-            if (isset($verifyImagePath)) {
-                Storage::disk('public')->delete($verifyImagePath);
-            }
-
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to add resident. Please try again.',
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
             ], 500);
+        }
+
+        $response = Http::asForm()->post(
+            'https://www.google.com/recaptcha/api/siteverify',
+            [
+                'secret' => env('RECAPTCHA_SECRET_KEY'),
+                'response' => $request->input('g-recaptcha-response'),
+                'remoteip' => $request->ip(),
+            ]
+        );
+
+        $captchaSuccess = json_decode($response->body())->success ?? false;
+
+        if (!$captchaSuccess) {
+            return response()->json([
+                'alert' => [
+                    'icon' => 'error',
+                    'title' => 'Captcha Failed',
+                    'text' => 'reCAPTCHA verification failed. Please try again.'
+                ]
+            ], 422);
         }
     }
 
@@ -200,7 +225,7 @@ class ResidentController extends Controller
                     "message" => "Resident not found"
                 ], 404);
             }
-            
+
             $resident->status = 'Verified';
             $resident->save();
 
@@ -213,7 +238,8 @@ class ResidentController extends Controller
             return response()->json([
                 "success" => false,
                 "message" => "Failed to verify resident",
-                "error" => $e->getMessage()
+                "error" => $e->getMessage(),
+
             ], 500);
         }
     }
@@ -315,9 +341,9 @@ class ResidentController extends Controller
             $resident->special_group_no = $request->special_group_no;
             $resident->verify_image = $verifyImagePath;
             $resident->email = $request->email;
-            
 
-    
+
+
             if ($request->filled('password')) {
                 $resident->password = Hash::make($request->password);
             }
