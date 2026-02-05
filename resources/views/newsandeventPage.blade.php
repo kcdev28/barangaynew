@@ -31,8 +31,6 @@
             </div>
         </div>
 
-
-
         <div class="filter-tabs">
             <button class="filter-tab active" data-filter="all">All News & Events</button>
             <button class="filter-tab" data-filter="news">News</button>

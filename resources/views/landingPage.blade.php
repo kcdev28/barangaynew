@@ -143,16 +143,16 @@
             </div>
 
             <div class="news-navigation">
-                <button class="view-all-btn">View All News & Events</button>
+                <a href="{{ route('newsandeventPage') }}"><button class="view-all-btn" >View All News & Events</button></a>
             </div>
         </div>
     </section>
 
     <section id="services" class="services-section">
         <div class="container-fluid">
-            <h2 class="section-title">Services</h2>
+            <h2 class="section-title">Barangay San Agustin Services</h2>
             <div class="services-grid">
-                <div class="service-item">
+                <div class="service-item" onclick="">
                     <div class="service-content">
                         <div class="service-icon">
                             <img src="{{ asset('icons/greenID.png') }}" alt="Barangay ID">

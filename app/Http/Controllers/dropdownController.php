@@ -31,6 +31,58 @@ class dropdownController extends Controller
         return view('barangayIDpage', compact('areas', 'civilStatuses', 'religions', 'specialStatuses'));
     }
 
+    public function BarangayClearanceCreate()
+    {
+        $areas = area::all();
+        $civilStatuses = civil::all();
+        $religions = religion::all();
+        $specialStatuses = special::all();
+
+        return view('BarangayClearancePage', compact('areas', 'civilStatuses', 'religions', 'specialStatuses'));
+    }
+
+    
+    public function IndigencyCreate()
+    {
+        $areas = area::all();
+        $civilStatuses = civil::all();
+        $religions = religion::all();
+        $specialStatuses = special::all();
+
+        return view('IndigencyPage', compact('areas', 'civilStatuses', 'religions', 'specialStatuses'));
+    }
+
+    public function ResidencyCreate()
+    {
+        $areas = area::all();
+        $civilStatuses = civil::all();
+        $religions = religion::all();
+        $specialStatuses = special::all();
+
+        return view('ResidencyPage', compact('areas', 'civilStatuses', 'religions', 'specialStatuses'));
+    }
+
+    public function JobSeekerCreate()
+    {
+        $areas = area::all();
+        $civilStatuses = civil::all();
+        $religions = religion::all();
+        $specialStatuses = special::all();
+
+        return view('FirstTimeJobSeekerPage', compact('areas', 'civilStatuses', 'religions', 'specialStatuses'));
+    }
+
+    public function BusinessPermitCreate()
+    {
+        $areas = area::all();
+        $civilStatuses = civil::all();
+        $religions = religion::all();
+        $specialStatuses = special::all();
+
+        return view('BusinessPermitPage', compact('areas', 'civilStatuses', 'religions', 'specialStatuses'));
+    }
+
+
     public function adminCreate()
     {
         $areas = area::all();

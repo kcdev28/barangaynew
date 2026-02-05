@@ -139,22 +139,16 @@ nav.navbar .navbar-nav .nav-item>.login-link {
     font-size: 16px !important;
 }
 
-nav.navbar .navbar-nav .nav-item>.register-link:hover {
-    background-color: none !important;
-    color: white !important;
-
+nav.navbar .navbar-nav .nav-item > .nav-link:hover {
+    background-color: transparent !important;
+    color: #1b7f3b !important;
 }
 
 nav.navbar .navbar-nav .nav-item>.login-link:hover {
-    background-color: #1b7f3b !important;
-    color: white !important;
+    background-color: transparent !important;
+    color: #1b7f3b !important;
 }
 
-nav.navbar .navbar-nav .nav-item>.nav-link:hover {
-    background-color: #1b7f3b;
-    color: white;
-
-}
 
 nav.navbar .navbar-nav .nav-item>.nav-link.active::after {
     background-color: #1b7f3b !important;
@@ -162,7 +156,14 @@ nav.navbar .navbar-nav .nav-item>.nav-link.active::after {
 
 }
 
-nav.navbar .navbar-nav .nav-item>.nav-link.active {
+nav.navbar .navbar-nav .nav-item > .nav-link.active {
+    background-color: transparent !important;
+    color: #1b7f3b !important;
+}
+
+nav.navbar .navbar-nav .nav-item > .register-link:hover,
+nav.navbar .navbar-nav .nav-item > .login-link:hover {
+    background-color: transparent !important;
     color: #1b7f3b !important;
 }
 

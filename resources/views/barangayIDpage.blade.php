@@ -14,42 +14,32 @@
     @include('navbar')
     <div class="registration-container">
         <div class="registration-card">
-            <h1 class="registration-title">Barangay ID Form</h1>
-
-            @if(Session::has('user_id') && Session::get('user_type') === 'resident')
-            <div class="alert alert-info">
-               Your information has been pre-filled. Please review and complete the form.
-            </div>
-            @endif
-
+            <h1 class="registration-title text-start">Barangay ID Application Form</h1>
             <form id="barangayIdForm" method="POST" enctype="multipart/form-data" novalidate>
                 @csrf
                 <div class="form-page active" id="page1">
                     <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="firstName" class="form-label">First Name: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="firstName" name="firstname"
-                                value="{{ $resident->firstname ?? '' }}" required>
+                            <input type="text" class="form-control" id="firstName" name="firstname" required>
                         </div>
                         <div class="col-md-3">
                             <label for="middleName" class="form-label">Middle Name:</label>
-                            <input type="text" class="form-control" id="middleName" name="middlename"
-                                value="{{ $resident->middlename ?? '' }}">
+                            <input type="text" class="form-control" id="middleName" name="middlename">
                         </div>
                         <div class="col-md-3">
                             <label for="lastName" class="form-label">Last Name: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="lastName" name="lastname"
-                                value="{{ $resident->lastname ?? '' }}" required>
+                            <input type="text" class="form-control" id="lastName" name="lastname" required>
                         </div>
                         <div class="col-md-3">
                             <label for="suffix" class="form-label">Suffix:</label>
                             <select class="form-select" id="suffix" name="suffix">
                                 <option value="">Select Suffix</option>
-                                <option value="Jr" {{ (isset($resident) && $resident->suffix == 'Jr') ? 'selected' : '' }}>Jr.</option>
-                                <option value="Sr" {{ (isset($resident) && $resident->suffix == 'Sr') ? 'selected' : '' }}>Sr.</option>
-                                <option value="II" {{ (isset($resident) && $resident->suffix == 'II') ? 'selected' : '' }}>II</option>
-                                <option value="III" {{ (isset($resident) && $resident->suffix == 'III') ? 'selected' : '' }}>III</option>
-                                <option value="IV" {{ (isset($resident) && $resident->suffix == 'IV') ? 'selected' : '' }}>IV</option>
+                                <option value="Jr">Jr.</option>
+                                <option value="Sr">Sr.</option>
+                                <option value="II">II</option>
+                                <option value="III">III</option>
+                                <option value="IV">IV</option>
                             </select>
                         </div>
                     </div>
@@ -57,23 +47,18 @@
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label for="houseNumber" class="form-label">House Number: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="houseNumber" name="house_no"
-                                value="{{ $resident->house_no ?? '' }}" required>
+                            <input type="text" class="form-control" id="houseNumber" name="house_no" required>
                         </div>
                         <div class="col-md-4">
                             <label for="street" class="form-label">Street: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="street" name="street"
-                                value="{{ $resident->street ?? '' }}" required>
+                            <input type="text" class="form-control" id="street" name="street" required>
                         </div>
                         <div class="col-md-4">
                             <label for="area" class="form-label">Area: <span class="text-danger">*</span></label>
                             <select class="form-select" id="area" name="area_no" required>
                                 <option value="">Select Area</option>
                                 @foreach($areas as $area)
-                                <option value="{{ $area->areaID }}"
-                                    {{ (isset($resident) && $resident->area == $area->areaID) ? 'selected' : '' }}>
-                                    {{ $area->area_name }}
-                                </option>
+                                <option value="{{ $area->areaID }}">{{ $area->area_name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -82,20 +67,18 @@
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label for="dateOfBirth" class="form-label">Date of Birth: <span class="text-danger">*</span></label>
-                            <input type="date" class="form-control" id="dateOfBirth" name="date_of_birth"
-                                value="{{ $resident->date_of_birth ?? '' }}" required>
+                            <input type="date" class="form-control" id="dateOfBirth" name="date_of_birth" required>
                         </div>
                         <div class="col-md-4">
                             <label for="placeOfBirth" class="form-label">Place of Birth: <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" id="placeOfBirth" name="place_of_birth"
-                                value="{{ $resident->place_of_birth ?? '' }}" required>
+                            <input type="text" class="form-control" id="placeOfBirth" name="place_of_birth" required>
                         </div>
                         <div class="col-md-4">
                             <label for="gender" class="form-label">Gender: <span class="text-danger">*</span></label>
                             <select class="form-select" id="gender" name="gender" required>
                                 <option value="">Select Gender</option>
-                                <option value="Male" {{ (isset($resident) && $resident->gender == 'Male') ? 'selected' : '' }}>Male</option>
-                                <option value="Female" {{ (isset($resident) && $resident->gender == 'Female') ? 'selected' : '' }}>Female</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
                             </select>
                         </div>
                     </div>
@@ -103,23 +86,18 @@
                     <div class="row mb-3">
                         <div class="col-md-4">
                             <label for="height" class="form-label">Height (cm): <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="height" name="height"
-                                value="{{ $resident->height ?? '' }}" required min="50" max="300">
+                            <input type="number" class="form-control" id="height" name="height" required min="50" max="300">
                         </div>
                         <div class="col-md-4">
                             <label for="weight" class="form-label">Weight (kg): <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" id="weight" name="weight"
-                                value="{{ $resident->weight ?? '' }}" required min="1" max="500">
+                            <input type="number" class="form-control" id="weight" name="weight" required min="1" max="500">
                         </div>
                         <div class="col-md-4">
                             <label for="civilStatus" class="form-label">Civil Status: <span class="text-danger">*</span></label>
                             <select class="form-select" id="civilStatus" name="civil_no">
                                 <option value="">Select Civil Status</option>
                                 @foreach($civilStatuses as $status)
-                                <option value="{{ $status->civilID }}"
-                                    {{ (isset($resident) && $resident->civil_no == $status->civilID) ? 'selected' : '' }}>
-                                    {{ $status->civil_stat }}
-                                </option>
+                                <option value="{{ $status->civilID }}">{{ $status->civil_stat }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -131,10 +109,7 @@
                             <select class="form-select" id="religion" name="religion_no">
                                 <option value="">Select Religion</option>
                                 @foreach($religions as $religion)
-                                <option value="{{ $religion->religionID }}"
-                                    {{ (isset($resident) && $resident->religion == $religion->religionID) ? 'selected' : '' }}>
-                                    {{ $religion->religion }}
-                                </option>
+                                <option value="{{ $religion->religionID }}">{{ $religion->religion }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -142,14 +117,13 @@
                             <label for="citizenship" class="form-label">Citizenship: <span class="text-danger">*</span></label>
                             <select class="form-select" id="citizenship" name="citizenship" required>
                                 <option value="">Select Citizenship</option>
-                                <option value="Filipino" {{ (isset($resident) && $resident->citizenship == 'Filipino') ? 'selected' : '' }}>Filipino</option>
-                                <option value="Foreign" {{ (isset($resident) && $resident->citizenship == 'Foreign') ? 'selected' : '' }}>Foreign</option>
+                                <option value="Filipino">Filipino</option>
+                                <option value="Foreign">Foreign</option>
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label for="precinctNo" class="form-label">Precinct No:</label>
-                            <input type="text" class="form-control" id="precinctNo" name="precinct_no"
-                                value="{{ $resident->precinct_no ?? '' }}">
+                            <input type="text" class="form-control" id="precinctNo" name="precinct_no">
                         </div>
                     </div>
 

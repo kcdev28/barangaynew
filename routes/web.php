@@ -8,6 +8,7 @@ use App\Http\Controllers\ResidentController;
 use App\Http\Controllers\IndigencyController;
 use App\Http\Controllers\ResidencyController;
 use App\Http\Controllers\JobSeekerController;
+use App\Http\Controllers\BarangayClearanceController;
 
 Route::get('/', function () {
     return view('landingPage');
@@ -37,10 +38,30 @@ Route::post('/register', [ResidentController::class, 'store'])->name('resident.s
 //barangay ID page
 Route::get('/barangayIDpage', function () { return view('barangayIDpage'); })->name('barangayIDpage');
 Route::get('/barangayIDpage', [dropdownController::class, 'barangayIDcreate'])->name('barangayIDpage');
-
 Route::get('/barangayIDpage', [BarangayIDController::class, 'showForm'])->name('barangayIDpage');
 Route::post('/submit-barangay-id', [BarangayIDController::class, 'submitForm'])->name('submitBarangayID');
 
+//barangay clearance page
+Route::get('/BarangayClearancePage', function () { return view('BarangayClearancePage'); })->name('BarangayClearancePage');
+Route::get('/BarangayClearancePage', [BarangayClearanceController::class, 'showForm'])->name('BarangayClearancePage');
+Route::get('/BarangayClearancePage', [dropdownController::class, 'BarangayClearanceCreate'])->name('BarangayClearancePage');
+
+//residency page
+Route::get('/ResidencyPage', function () { return view('ResidencyPage'); })->name('ResidencyPage');
+Route::get('/ResidencyPage', [dropdownController::class, 'ResidencyCreate'])->name('ResidencyPage');
+
+//Indigency page
+Route::get('/IndigencyPage', function () { return view('IndigencyPage'); })->name('IndigencyPage');
+Route::get('/IndigencyPage', [IndigencyController::class, 'showForm'])->name('IndigencyPage');
+Route::get('/IndigencyPage', [dropdownController::class, 'IndigencyCreate'])->name('IndigencyPage');
+
+//jobseeker page
+Route::get('/FirstTimeJobSeekerPage', function () { return view('FirstTimeJobSeekerPage'); })->name('FirstTimeJobSeekerPage');
+Route::get('/FirstTimeJobSeekerPage', [dropdownController::class, 'JobSeekerCreate'])->name('FirstTimeJobSeekerPage');
+
+//business permit page
+Route::get('/BusinessPermitPage', function () { return view('BusinessPermitPage'); })->name('BusinessPermitPage');
+Route::get('/BusinessPermitPage', [dropdownController::class, 'BusinessPermitCreate'])->name('BusinessPermitPage');
 
 //admin routes
 Route::get('/admin/dashboard', function () { return view('dashboard'); })->name('admin.dashboard');

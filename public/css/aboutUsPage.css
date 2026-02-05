@@ -12,8 +12,6 @@
   font-style: normal;
 }
 
-
-
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +25,7 @@ body {
 
 .page-header {
     width: 100%;
-    height: 220px;
+    height: 200px;
     background-image: 
         linear-gradient(
             to right,
@@ -50,12 +48,12 @@ body {
 }
 
 .page-header-content {
-    padding-left: 250px;
+    padding-left: 100px;
     color: #fff;
 }
 
 .page-header-content h1 {
-    font-size: 48px;
+    font-size: 40px;
     font-family: 'myfontbold', sans-serif;
     margin-bottom: 5px;
 }
@@ -77,7 +75,6 @@ body {
         font-size: 14px;
     }
 }
-
 
 
 .scroll-animate {
@@ -430,7 +427,6 @@ body {
 .awards-carousel {
     width: 100%;
     margin: 0 auto;
-    padding: 0 60px;
 }
 
 .carousel-container {
@@ -520,6 +516,17 @@ body {
     background: #1b7f3b;
 }
 
+@media (max-width: 1400px) {
+    .about-section-container{
+        padding: 0 100px;
+    }
+
+   .mission-vision-container  {
+        padding: 0 100px;
+
+    }
+  
+}
 
 
 @media (max-width: 968px) {

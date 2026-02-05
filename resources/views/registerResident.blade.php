@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +16,7 @@
 <body>
     @include('navbar')
 
-    <div class="registration-container">
+    <div class="registration-container container-fluid">
         <div class="registration-card">
             <h1 class="registration-title">Registration Form</h1>
 

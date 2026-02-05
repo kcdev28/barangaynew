@@ -274,7 +274,7 @@ p {
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 100px;
+    width: 500px;
     height: 4px;
     background: #1b7f3b;
     border-radius: 2px;
@@ -370,7 +370,7 @@ p {
 }
 
 .gallery-grid {
-    max-width: 1300px;
+    max-width: 1400px;
     margin: 40px auto 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);

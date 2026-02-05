@@ -25,7 +25,7 @@
             </div>
 
             <div class="login-form-container">
-
+                <h6 class="login-text text-center mb-3">Sign In to your account</h6>
                 <form id="loginForm" action="{{ route('login') }}" method="POST">
                     @csrf
                     <div class="form-group">
@@ -76,7 +76,6 @@
         }
     </script>
     
-=
     @if(session::has('logoutsuccess'))
     <script>
         Swal.fire({

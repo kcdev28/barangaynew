@@ -1,23 +1,20 @@
 <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 
 <footer class="footer">
-    <div class="container">
+    <div class="container-fluid px-3">
         <div class="row">
-       
             <div class="col-lg-3 col-md-6 mb-4">
                 <div class="footer-logo-section">
                     <img src="{{ asset('images/sanagustinlogo.png') }}" alt="Barangay Logo" class="sanagustinlogo">
                     <img src="{{ asset('images/lungsodquezonlogo.png') }}" alt="Triangle Logo" class="lungsodquezonlogo">
+                    <div class="footer-title ms-3">BARANGAY SAN AGUSTIN</div>
                 </div>
-                <div class="footer-title">BARANGAY SAN AGUSTIN</div>
             </div>
-
             <div class="col-lg-3 col-md-6 mb-4">
                 <h5>Quick Links</h5>
                 <a href="{{ route('landingPage') }}">Home</a>
                 <a href="{{ route('aboutUsPage') }}">About</a>
-                <a href="#">Mission & Vision</a>
-                <a href="#">Announcements</a>
+                <a href="{{ route('newsandeventPage') }}">News & Events</a>
                 <a href="#">Services</a>
                 <a href="#">Contact</a>
             </div>
@@ -31,8 +28,6 @@
                 <a href="#">Certificate of Indigency</a>
                 <a href="#">First Time Job Seeker</a>
                 <a href="#">Business Permit</a>
-                <a href="#">Blotter Report</a>
-                <a href="#">Household Information</a>
             </div>
 
             <div class="col-lg-3 col-md-6 mb-4">
